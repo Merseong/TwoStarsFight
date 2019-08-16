@@ -10,7 +10,7 @@ public enum PlayerNumber {
 
 public class GameManager : SingletonBehaviour<GameManager> {
 
-    public Player[] players = new Player[2];
+    public GameObject[] players = new GameObject[2];
     public int[] playersLife = new int[2];
     public Transform[] spawnPositions = new Transform[2];
 
@@ -47,15 +47,15 @@ public class GameManager : SingletonBehaviour<GameManager> {
     }
 
     private IEnumerator PlayerRespawn(PlayerNumber playerNo) {
+        Instantiate(players[(int)playerNo], spawnPositions[(int)playerNo].position, Quaternion.Euler(0, 0, 0));
         spawnCountText.text = "";
         for (int i = 0; i < 3; i++) {
-            spawnCountText.text = (i + 1).ToString();
+            //spawnCountText.text = (i + 1).ToString();
             yield return new WaitForSeconds(1);
         }
-        spawnCountText.text = "GO!";
+        //spawnCountText.text = "GO!";
         yield return new WaitForSeconds(.5f);
         spawnCountText.text = "";
-        Instantiate(players[(int)playerNo], spawnPositions[(int)playerNo].position, Quaternion.Euler(0, 0, 0));
     }
 
     private void YoureWinner(PlayerNumber playerNo) {

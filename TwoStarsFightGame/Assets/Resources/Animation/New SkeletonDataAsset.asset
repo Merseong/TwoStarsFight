@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1b3b4b945939a54ea0b23d3396115fb, type: 3}
-  m_Name: skeleton
+  m_Script: {fileID: 11500000, guid: 54faebb4058723e4bb99969c64a083e7, type: 3}
+  m_Name: New SkeletonDataAsset
   m_EditorClassIdentifier: 
   atlasAssets:
-  - {fileID: 11400000, guid: b36f4282fe78bb343861ceffb83fe7fd, type: 2}
+  - {fileID: 11400000, guid: 98b3e413663b2754989bb10b1fdc2dfa, type: 2}
   scale: 0.01
-  skeletonJSON: {fileID: 4900000, guid: c550777edc1b79b4e83e318da756358f, type: 3}
+  skeletonJSON: {fileID: 4900000, guid: 5512793614a839e4bb99c3ef611973e4, type: 3}
   skeletonDataModifiers: []
   fromAnimation: []
   toAnimation: []

@@ -524,7 +524,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.23, y: 0.94}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 0.23, y: 0.94}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -569,12 +569,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e04139ba5c376fc4c9f96c7414fe566a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 911abae92fd0fb54f976f0000999d150, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.23, y: 0.94}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -708,11 +708,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1337709048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 709bbcc39c12401469aed2b531a9903a, type: 3}
+  m_Script: {fileID: 11500000, guid: b3a836b6c4bc23744a9b544cd1683825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playtimeText: {fileID: 1783190362}
-  hpPrefab: {fileID: 3034710808931941385, guid: 476afcb8e611a8546bd43cf19258e716,
+  hpPrefab: {fileID: 3034710808931941385, guid: dd314483081b3c4479f48cf5b0d2ce65,
     type: 3}
   Player1_hp:
   - {fileID: 0}
@@ -942,12 +942,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1499226065}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b38e62237277ae24591c00a2d0bee5ea, type: 3}
+  m_Script: {fileID: 11500000, guid: 11cc223d2d311814097a4adadb24912e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   players:
-  - {fileID: 6223308044425255582, guid: b579f5b7bac2cb64687a42c267dcfabd, type: 3}
-  - {fileID: 248019877817501029, guid: d37e04bdec3a71f4e9e0af692a68b88c, type: 3}
+  - {fileID: 6223308044425255583, guid: 254a2586a5ebe8243bbeb13fcf8ecba2, type: 3}
+  - {fileID: 6223308044425255583, guid: 15b2882c005250544b3be63411c9cf4e, type: 3}
   playersLife: 0000000000000000
   spawnPositions:
   - {fileID: 484123955}
@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1783190359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fca537af7525a443b585ffa15f3c62f, type: 3}
+  m_Script: {fileID: 11500000, guid: d7a1241ff010f214193f10048a15eb90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1783190362
