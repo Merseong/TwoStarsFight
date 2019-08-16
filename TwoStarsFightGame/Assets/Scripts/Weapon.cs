@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 public enum WeaponType
 {
@@ -32,6 +33,7 @@ public abstract class Weapon : MonoBehaviour
     public WeaponOption mode2Option;
     public float startTimer = 0f;
     public float endTimer = 0f;
+    public SkeletonAnimation skeleton;
 
     [Space(10)]
     private Coroutine currentBreakCount;
@@ -61,7 +63,7 @@ public abstract class Weapon : MonoBehaviour
         }
         else if (canDamage)
         {
-            if (col.GetComponentInParent<Player>().playerNumber != equipPlayer.playerNumber)
+            if (col.CompareTag("Body") && col.GetComponentInParent<Player>().playerNumber != equipPlayer.playerNumber)
             {
                 Debug.Log("Damaged");
                 col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage);
@@ -102,25 +104,13 @@ public abstract class Weapon : MonoBehaviour
         Break();
     }
 
-    IEnumerator WeaponStartCount()
+    protected delegate void callback();
+    protected IEnumerator WaitTime(float time, callback _callback)
     {
-        while (startTimer >= 0)
-        {
-            yield return new WaitForSeconds(0.1f);
-            startTimer -= 0.1f;
-        }
-        Break();
+        yield return new WaitForSeconds(time);
+        _callback();
     }
 
-    IEnumerator WeaponEndCount()
-    {
-        while (endTimer >= 0)
-        {
-            yield return new WaitForSeconds(0.1f);
-            endTimer -= 0.1f;
-        }
-        Break();
-    }
 
     public abstract void Break();
     public abstract void ModeChange();
@@ -147,6 +137,9 @@ public class WeaponOption : ScriptableObject
     [Header("공격자의 옵션들")]
     [Tooltip("선딜")]
     public float startTime;
+    [Tooltip("애니메이션 타임")]
+    public float _animTime;
+    public float animTime { get { return _animTime - (startTime + endTime); } }
     [Tooltip("후딜")]
     public float endTime;
     [Tooltip("쿨타임")]

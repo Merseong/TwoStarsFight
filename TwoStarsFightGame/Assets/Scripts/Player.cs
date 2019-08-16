@@ -12,14 +12,10 @@ public class Player : MonoBehaviour
 
     private GameObject hpbar;
     public PlayerController playerController = null;
+    public bool isAfterTime = false;
 
     [SerializeField]
     private Weapon defaultWeapon;
-
-    public void Update()
-    {
-        IngameUIManager.inst.UpdatePlayerHP(health, playerNo);
-    }
 
     public void Equip(Weapon weapon)
     {
@@ -31,12 +27,14 @@ public class Player : MonoBehaviour
         if (health <= value)
         {
             health = 0;
+            IngameUIManager.inst.UpdatePlayerHP(health, playerNo);
             GameManager.inst.PlayerDead(playerNo);
             return false;
         }
         else
         {
             health -= value;
+            IngameUIManager.inst.UpdatePlayerHP(health, playerNo);
             return true;
         }
     }

@@ -59,15 +59,18 @@ public class PlayerController : MonoBehaviour
         }
         vertical = Input.GetAxis("Vertical" + playerControl + "P"); //up, down input
         horizontal = Input.GetAxis("Horizontal" + playerControl + "P"); //left, right input
-        if (horizontal != 0 && !animSeted)
+        if (playerState == PlayerState.Idle)
         {
-            skeleton.AnimationState.SetAnimation(0, "RUN", true);
-            animSeted = true;
-        }
-        else if (horizontal == 0 && animSeted)
-        {
-            skeleton.AnimationState.SetAnimation(0, "IDLE", true);
-            animSeted = false;
+            if (horizontal != 0 && !animSeted)
+            {
+                skeleton.AnimationState.SetAnimation(0, "RUN", true);
+                animSeted = true;
+            }
+            else if (horizontal == 0 && animSeted)
+            {
+                skeleton.AnimationState.SetAnimation(0, "IDLE", true);
+                animSeted = false;
+            }
         }
         if (Input.GetButtonDown("Jump" + playerControl + "P") &&IsGround)
         {
@@ -77,12 +80,12 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
             {
-                skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_1", false);
+                playerState = PlayerState.Attack;
                 player.currentWeapon.AttackA();
             }
             if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
             {
-                skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_2", false);
+                playerState = PlayerState.Attack;
                 player.currentWeapon.AttackB();
             }
             if (Input.GetButtonDown("ModeChange" + playerControl + "P"))

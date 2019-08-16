@@ -19,6 +19,7 @@ MonoBehaviour:
   knockbackTime: 0
   stiffTime: 0
   haveAction: 0
-  startTime: 0
+  startTime: 0.1
+  _animTime: 0.6
   endTime: 0
   coolTime: 0

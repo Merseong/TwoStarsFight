@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class Default : Weapon, HandWeapon, Shield
 {
-
     public override void AttackA()
     {
+        skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_1", false);
+        StartCoroutine(WaitTime(mode1Option.startTime, delegate { canDamage = true;
+            StartCoroutine(WaitTime(mode1Option.animTime, delegate { canDamage = false; equipPlayer.isAfterTime = true;
+                StartCoroutine(WaitTime(mode1Option.endTime, delegate { equipPlayer.isAfterTime = false;
+                    equipPlayer.playerController.playerState = PlayerState.Idle;
+                }));
+            }));
+        }));
         Debug.Log("Default AttackA");
-        canDamage = true;
     }
 
     public override void AttackB()
     {
+        //skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_2", false);
+        StartCoroutine(WaitTime(mode1Option.startTime, delegate {
+            canDamage = true;
+            StartCoroutine(WaitTime(mode1Option.animTime, delegate {
+                canDamage = false; equipPlayer.isAfterTime = true;
+                StartCoroutine(WaitTime(mode1Option.endTime, delegate { equipPlayer.isAfterTime = false;
+                    equipPlayer.playerController.playerState = PlayerState.Idle;
+                }));
+            }));
+        }));
         Debug.Log("Default AttackB");
         canDamage = true;
     }
