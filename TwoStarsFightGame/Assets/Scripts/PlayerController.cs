@@ -21,12 +21,9 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            Debug.Log(Physics2D.Linecast(landChecker.position + new Vector3(-col.bounds.size.x / 2 - 0.01f, 0),
-                landChecker.position + new Vector3(col.bounds.size.x / 2 + 0.01f, 0),
-                1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Ground Passable")).transform != null);
             return Physics2D.Linecast(landChecker.position + new Vector3(-col.bounds.size.x / 2 - 0.01f, 0),
                 landChecker.position + new Vector3(col.bounds.size.x / 2 + 0.01f, 0),
-                1 << LayerMask.NameToLayer("Ground") | 1 << LayerMask.NameToLayer("Ground Passable")).transform != null;
+                1 << LayerMask.NameToLayer("Ground")).transform != null;
         }
     }
 
