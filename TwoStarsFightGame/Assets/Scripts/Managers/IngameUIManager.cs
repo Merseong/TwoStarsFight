@@ -29,9 +29,9 @@ public class IngameUIManager : SingletonBehaviour<IngameUIManager>
         playtimeText.text = seconds;
     }
 
-    public void UpdatePlayerHP(int hp, bool playertype)
+    public void UpdatePlayerHP(int hp, PlayerNumber pNum)
     {
-        if (playertype)
+        if (pNum == PlayerNumber.player1)
         {
             for(int i = 0; i< 100; i++)
             {

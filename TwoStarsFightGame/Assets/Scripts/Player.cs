@@ -10,8 +10,6 @@ public class Player : MonoBehaviour
     public Weapon currentWeapon = null;
     public PlayerNumber playerNo;
 
-    public bool playertype;
-
     private GameObject hpbar;
     public PlayerController playerController = null;
 
@@ -20,7 +18,7 @@ public class Player : MonoBehaviour
 
     public void OnEnable()
     {
-        if (playertype)
+        if (playerNo == PlayerNumber.player1)
         {
             hpbar = GameObject.Find("1P_HP_Bar");
             for (int i = 0; i < 100; i++) // 플레이어 리스폰 시 hp바 초기화
@@ -37,7 +35,7 @@ public class Player : MonoBehaviour
 
     public void Update()
     {
-        IngameUIManager.inst.UpdatePlayerHP(health, playertype);
+        IngameUIManager.inst.UpdatePlayerHP(health, playerNo);
     }
 
     public void Equip(Weapon weapon)

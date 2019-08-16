@@ -42,8 +42,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        col = GetComponent<Collider2D>();
         landChecker = transform.Find("LandChecker");
+        col = landChecker.GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
 
