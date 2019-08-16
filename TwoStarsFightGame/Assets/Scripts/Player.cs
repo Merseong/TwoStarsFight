@@ -7,6 +7,9 @@ public class Player : MonoBehaviour
     public int health = 100;
     public Weapon currentWeapon = null;
 
+    [SerializeField]
+    private Weapon defaultWeapon;
+
     public void Equip(Weapon weapon)
     {
         currentWeapon = weapon;

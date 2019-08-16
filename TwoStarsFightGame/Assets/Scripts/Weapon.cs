@@ -2,6 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeaponType
+{
+    NULL,
+    Hand,
+    Range,
+    Shield
+}
+
 public abstract class Weapon : MonoBehaviour
 {
     [Header("When Item Mode")]
@@ -9,6 +17,7 @@ public abstract class Weapon : MonoBehaviour
 
     [Header("When Weapon Mode")]
     public bool isModeChanged = false;
+    public Player equipPlayer = null;
     public int durability = 100;
     public WeaponOption mode1Option;
     public WeaponOption mode2Option;
@@ -21,7 +30,8 @@ public abstract class Weapon : MonoBehaviour
         /*
          * isItem = false;
          * GetComponent<Collider>().enable = false;
-         * col.GetComponent<Player>().Equip(this);
+         * equipPlayer = col.GetComponent<Player>();
+         * equipPlayer.Equip(this);
          * currentBreakCount = StartCoroutine(ItemBreakCount());
          * */
     }
@@ -29,13 +39,22 @@ public abstract class Weapon : MonoBehaviour
     public void DropWeapon()
     {
         StopCoroutine(currentBreakCount);
+        equipPlayer = null;
         //GetComponent<Collider>().enable = true;
         isItem = true;
     }
 
-    public void DecreaseDurability()
+    public void DecreaseDurability(int value)
     {
-
+        if (durability < value)
+        {
+            StopCoroutine(currentBreakCount);
+            Break();
+        }
+        else
+        {
+            durability -= value;
+        }
     }
 
     IEnumerator ItemBreakCount()
@@ -59,8 +78,11 @@ public class WeaponOption : ScriptableObject
 {
     [Header("무기의 옵션들")]
     public string weaponName;
+    public WeaponType weaponType;
     [Tooltip("무기의 데미지")]
     public float damage;
+    [Tooltip("공격시 감소하는 내구도")]
+    public int minusDurability;
     [Tooltip("넉백 시간")]
     public float knockbackTime;
     [Tooltip("경직 시간")]
@@ -72,6 +94,8 @@ public class WeaponOption : ScriptableObject
     public float startTime;
     [Tooltip("후딜")]
     public float endTime;
+    [Tooltip("쿨타임")]
+    public float coolTime;
 }
 
 public interface RangeWeapon
