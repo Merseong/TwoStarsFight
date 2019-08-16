@@ -1,28 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public enum PlayerState
 {
     Idle,
     Attack,
     Parry,
     Guard
-
 }
+
 public class PlayerController : MonoBehaviour
 {
-    
     public int playerControl;
     public Player player;
-    public PlayerState playerState;
+    public float delayTimer = 0f;
+    public PlayerState playerState = PlayerState.Idle;
 
     //TODO: change variable type to private after valnace testing
     public float speed = 0f;
     public float jumpSpeed = 0f;
     private Collider2D col;
     private Transform landChecker;
-    private float delayTimer = 0f;
+    
 
     float vertical;
     float horizontal;
@@ -41,12 +40,11 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         col = GetComponent<Collider2D>();
         landChecker = transform.Find("LandChecker");
         rb = GetComponent<Rigidbody2D>();
-        playerState = PlayerState.Idle;
     }
 
     // Update is called once per frame
@@ -60,7 +58,6 @@ public class PlayerController : MonoBehaviour
         {
             vertical= Input.GetAxis("Vertical1P"); //up, down input
             horizontal = Input.GetAxis("Horizontal1P"); //left, right input
-
             if (Input.GetButtonDown("Jump1P")&&IsGround)
             {
                 rb.velocity += new Vector2(0, jumpSpeed);

@@ -10,30 +10,58 @@ public enum WeaponType
     Shield
 }
 
+public enum WeaponState
+{
+    Idle,
+    Start,
+    Attack,
+    End
+}
+
 public abstract class Weapon : MonoBehaviour
 {
     [Header("When Item Mode")]
     public bool isItem = true;
 
     [Header("When Weapon Mode")]
+    public WeaponState weaponState = WeaponState.Idle;
     public bool isModeChanged = false;
     public Player equipPlayer = null;
     public int durability = 100;
     public WeaponOption mode1Option;
     public WeaponOption mode2Option;
+    public float startTimer = 0f;
+    public float endTimer = 0f;
 
     [Space(10)]
     private Coroutine currentBreakCount;
+    private Coroutine attackStartCount;
+    private Coroutine attackEndCount;
 
-    public void OnTriggerEnter(Collider col)
+    public void Update()
     {
-        /*
-         * isItem = false;
-         * GetComponent<Collider>().enable = false;
-         * equipPlayer = col.GetComponent<Player>();
-         * equipPlayer.Equip(this);
-         * currentBreakCount = StartCoroutine(ItemBreakCount());
-         * */
+        if(equipPlayer!=null)
+            transform.position = equipPlayer.transform.position;
+    }
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if (isItem)
+        {
+            Debug.Log("OntriggerOn");
+            isItem = false;
+            //GetComponent<Collider2D>().enabled = false;
+            equipPlayer = col.GetComponent<Player>();
+            equipPlayer.Equip(this);
+            currentBreakCount = StartCoroutine(ItemBreakCount());
+        }
+        else
+        {
+            if (col.gameObject.GetComponent<Player>().playerNumber != equipPlayer.playerNumber)
+            {
+                col.gameObject.GetComponent<Player>().DecreaseHP(mode1Option.damage);
+            }
+        }
+
     }
 
     public void DropWeapon()
@@ -67,6 +95,26 @@ public abstract class Weapon : MonoBehaviour
         Break();
     }
 
+    IEnumerator WeaponStartCount()
+    {
+        while (startTimer >= 0)
+        {
+            yield return new WaitForSeconds(0.1f);
+            startTimer -= 0.1f;
+        }
+        Break();
+    }
+
+    IEnumerator WeaponEndCount()
+    {
+        while (endTimer >= 0)
+        {
+            yield return new WaitForSeconds(0.1f);
+            endTimer -= 0.1f;
+        }
+        Break();
+    }
+
     public abstract void Break();
     public abstract void ModeChange();
     public abstract void AttackA();
@@ -80,7 +128,7 @@ public class WeaponOption : ScriptableObject
     public string weaponName;
     public WeaponType weaponType;
     [Tooltip("무기의 데미지")]
-    public float damage;
+    public int damage;
     [Tooltip("공격시 감소하는 내구도")]
     public int minusDurability;
     [Tooltip("넉백 시간")]
