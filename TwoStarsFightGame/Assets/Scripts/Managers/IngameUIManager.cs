@@ -9,19 +9,27 @@ public class IngameUIManager : SingletonBehaviour<IngameUIManager>
     public Text playtimeText;
     public GameObject hpPrefab;
 
-    public GameObject[] Player1_hp = new GameObject[100];
-    public GameObject[] Player2_hp = new GameObject[100];
-    private void Start()
+    public Image[,] Player_hp = new Image[2,100];
+
+    private int isGenerated = 0;
+
+    public void ResetHPBar(PlayerNumber pnum)
     {
-        if (inst != this)
+        GameObject hpbar;
+
+        hpbar = GameObject.Find(((int)pnum + 1) + "P_HP_Bar");
+        if (isGenerated < 2)
         {
-            Destroy(gameObject);
-            return;
+            for (int i = 0; i < 100; i++) // 플레이어 리스폰 시 hp바 초기화
+                Player_hp[(int)pnum, i] = Instantiate(hpPrefab, hpbar.transform).GetComponent<Image>();
+            isGenerated++;
         }
         else
-            SetStatic();
+        {
+            for (int i = 0; i < 100; i++) // 플레이어 리스폰 시 hp바 초기화
+                Player_hp[(int)pnum, i].enabled = true;
+        }
     }
-
 
     public void UpdatePlaytimeText(float time)
     {
@@ -36,7 +44,7 @@ public class IngameUIManager : SingletonBehaviour<IngameUIManager>
             for(int i = 0; i< 100; i++)
             {
                 if( i < 100 - hp)
-                    Player1_hp[i].GetComponent<Image>().enabled = false;
+                    Player_hp[(int)pNum, i].enabled = false;
             }
                 
         }
@@ -45,7 +53,7 @@ public class IngameUIManager : SingletonBehaviour<IngameUIManager>
             for (int i = 0; i < 100; i++)
             {
                 if (i >=  hp)
-                    Player2_hp[i].GetComponent<Image>().enabled = false;
+                    Player_hp[(int)pNum, i].enabled = false;
             }
 
         }

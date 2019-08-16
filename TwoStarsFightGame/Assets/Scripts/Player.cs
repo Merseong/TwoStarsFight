@@ -16,23 +16,6 @@ public class Player : MonoBehaviour
     [SerializeField]
     private Weapon defaultWeapon;
 
-    public void OnEnable()
-    {
-        if (playerNo == PlayerNumber.player1)
-        {
-            hpbar = GameObject.Find("1P_HP_Bar");
-            for (int i = 0; i < 100; i++) // 플레이어 리스폰 시 hp바 초기화
-                IngameUIManager.inst.Player1_hp[i] = Instantiate(IngameUIManager.inst.hpPrefab, hpbar.transform);
-        }
-        else
-        {
-            hpbar = GameObject.Find("2P_HP_Bar");
-            for (int i = 0; i < 100; i++)
-                IngameUIManager.inst.Player2_hp[i] = Instantiate(IngameUIManager.inst.hpPrefab, hpbar.transform);
-        }
-
-    }
-
     public void Update()
     {
         IngameUIManager.inst.UpdatePlayerHP(health, playerNo);

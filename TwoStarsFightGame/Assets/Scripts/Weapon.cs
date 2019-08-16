@@ -40,8 +40,8 @@ public abstract class Weapon : MonoBehaviour
 
     public void Update()
     {
-        if(equipPlayer!=null)
-            transform.position = equipPlayer.transform.position;
+        //if(equipPlayer!=null)
+            //transform.position = equipPlayer.transform.position;
     }
     public void OnTriggerEnter2D(Collider2D col)
     {
@@ -56,9 +56,10 @@ public abstract class Weapon : MonoBehaviour
         }
         else
         {
-            if (col.gameObject.GetComponent<Player>().playerNumber != equipPlayer.playerNumber)
+            if (col.GetComponentInParent<Player>().playerNumber != equipPlayer.playerNumber)
             {
-                col.gameObject.GetComponent<Player>().DecreaseHP(mode1Option.damage);
+                Debug.Log("Damaged");
+                col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage);
             }
         }
 

@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Default2
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
-  weaponName: Default
+  weaponName: "\uAE30\uBCF8\uBC29\uD328"
   weaponType: 3
   damage: 0
-  minusDurability: 1
+  minusDurability: 0
   knockbackTime: 0
   stiffTime: 0
   haveAction: 0
-  startTime: 10
-  endTime: 10
-  coolTime: 10
+  startTime: 0
+  endTime: 0
+  coolTime: 0

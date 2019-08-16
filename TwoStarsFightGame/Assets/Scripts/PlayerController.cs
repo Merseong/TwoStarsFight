@@ -14,7 +14,6 @@ public class PlayerController : MonoBehaviour
 {
     public int playerControl;
     public SkeletonAnimation skeleton;
-    public Animator anim;
     public Player player;
     public float delayTimer = 0f;
     public PlayerState playerState = PlayerState.Idle;
@@ -78,7 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
             {
-                anim.SetTrigger("ATTACK_BASIC_1");
                 skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_1", false);
                 player.currentWeapon.AttackA();
             }

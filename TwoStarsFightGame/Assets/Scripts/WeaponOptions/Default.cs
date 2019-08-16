@@ -11,8 +11,6 @@ public class Default : Weapon, HandWeapon, Shield
         {
             //true 모드의 A 공격
             Debug.Log("AttackTrue");
-            transform.position += new Vector3(5f, 0, 0);
-            transform.position -= new Vector3(5f, 0, 0);
 
         }
         else
