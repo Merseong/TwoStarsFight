@@ -9,9 +9,9 @@ public class toggletest : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
-            GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(1, "ATTACKDOWN", false);
+            GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(1, "ATTACK_BASIC_1", false);
         else if (Input.GetMouseButtonDown(1))
-            GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(1, "ATTACKUP", false);
+            GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(1, "SHIELD_BASIC_1", false);
         else
             GetComponent<SkeletonAnimation>().AnimationState.AddAnimation(0, "IDLE", true, 0);
     }
