@@ -1,0 +1,83 @@
+
+skeleton.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+BasicShield
+  rotate: true
+  xy: 242, 87
+  size: 165, 199
+  orig: 165, 199
+  offset: 0, 0
+  index: -1
+BasicSword
+  rotate: false
+  xy: 914, 26
+  size: 16, 120
+  orig: 16, 120
+  offset: 0, 0
+  index: -1
+Body1
+  rotate: true
+  xy: 443, 132
+  size: 120, 197
+  orig: 120, 197
+  offset: 0, 0
+  index: -1
+Body2
+  rotate: true
+  xy: 642, 134
+  size: 118, 186
+  orig: 120, 190
+  offset: 1, 0
+  index: -1
+Body3
+  rotate: true
+  xy: 443, 28
+  size: 102, 181
+  orig: 120, 190
+  offset: 8, 2
+  index: -1
+Crossbow
+  rotate: true
+  xy: 2, 60
+  size: 192, 238
+  orig: 192, 238
+  offset: 0, 0
+  index: -1
+Face1
+  rotate: true
+  xy: 242, 2
+  size: 83, 150
+  orig: 83, 150
+  offset: 0, 0
+  index: -1
+Face2
+  rotate: false
+  xy: 642, 23
+  size: 185, 109
+  orig: 185, 109
+  offset: 0, 0
+  index: -1
+Face3
+  rotate: false
+  xy: 914, 148
+  size: 102, 104
+  orig: 106, 109
+  offset: 0, 2
+  index: -1
+Limb1
+  rotate: false
+  xy: 932, 46
+  size: 51, 100
+  orig: 51, 100
+  offset: 0, 0
+  index: -1
+Spear
+  rotate: false
+  xy: 830, 14
+  size: 82, 238
+  orig: 192, 238
+  offset: 54, 0
+  index: -1
