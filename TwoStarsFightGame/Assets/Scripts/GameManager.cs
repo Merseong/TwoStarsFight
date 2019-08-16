@@ -56,16 +56,11 @@ public class GameManager : SingletonBehaviour<GameManager> {
         yield return new WaitForSeconds(.5f);
         spawnCountText.text = "";
         Instantiate(players[(int)playerNo], spawnPositions[(int)playerNo].position, Quaternion.Euler(0, 0, 0));
-        GameManagerDebug();
     }
 
     private void YoureWinner(PlayerNumber playerNo) {
         winnerText.text = "게임종료!\n플레이어" + ((int)playerNo + 1) + "의 승리";
         restartButton.onClick.AddListener(delegate { SceneManager.LoadScene("GameManager Test"); });
         restartButton.gameObject.SetActive(true);
-    }
-
-    private void GameManagerDebug() {
-        PlayerDead(PlayerNumber.player1);
     }
 }
