@@ -50,7 +50,7 @@ public class GameManager : SingletonBehaviour<GameManager> {
         spawnCountText.text = "";
         for (int i = 0; i < 3; i++) {
             spawnCountText.text = (i + 1).ToString();
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(1);
         }
         spawnCountText.text = "GO!";
         yield return new WaitForSeconds(.5f);
