@@ -38,6 +38,11 @@ public abstract class Weapon : MonoBehaviour
     private Coroutine attackStartCount;
     private Coroutine attackEndCount;
 
+    // 선딜 후 canDamage를 true로 만듬
+    // 타격 성공시 canDamage를 false로 만듬
+    // 후딜 시작시 canDamage를 false로 만듬
+    protected bool canDamage = false;
+
     public void Update()
     {
         //if(equipPlayer!=null)
@@ -54,12 +59,13 @@ public abstract class Weapon : MonoBehaviour
             equipPlayer.Equip(this);
             currentBreakCount = StartCoroutine(ItemBreakCount());
         }
-        else
+        else if (canDamage)
         {
             if (col.GetComponentInParent<Player>().playerNumber != equipPlayer.playerNumber)
             {
                 Debug.Log("Damaged");
                 col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage);
+                canDamage = false;
             }
         }
 

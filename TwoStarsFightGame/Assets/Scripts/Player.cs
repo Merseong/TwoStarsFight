@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
 
     public bool DecreaseHP(int value)
     {
-        if (health < value)
+        if (health <= value)
         {
             health = 0;
             GameManager.inst.PlayerDead(playerNo);

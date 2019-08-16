@@ -7,32 +7,14 @@ public class Default : Weapon, HandWeapon, Shield
 
     public override void AttackA()
     {
-        if (isModeChanged)
-        {
-            //true 모드의 A 공격
-            Debug.Log("AttackTrue");
-
-        }
-        else
-        {
-            //false 모드의 A공격
-            Debug.Log("AttackFalse");
-        }
-        
+        Debug.Log("Default AttackA");
+        canDamage = true;
     }
 
     public override void AttackB()
     {
-        if (isModeChanged)
-        {
-            //true 모드의 B 공격
-            Debug.Log("Attack");
-        }
-        else
-        {
-            //false 모드의 B 공격
-            Debug.Log("Attack");
-        }
+        Debug.Log("Default AttackB");
+        canDamage = true;
     }
 
     public override void Break()
