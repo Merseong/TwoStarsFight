@@ -5,6 +5,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public int health = 100;
+    public Weapon currentWeapon = null;
+
+    public void Equip(Weapon weapon)
+    {
+        currentWeapon = weapon;
+    }
 
     public bool DecreaseHP(int value)
     {
