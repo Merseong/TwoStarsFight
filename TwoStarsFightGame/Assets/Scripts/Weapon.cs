@@ -116,6 +116,9 @@ public abstract class Weapon : MonoBehaviour
     public abstract void ModeChange();
     public abstract void AttackA();
     public abstract void AttackB();
+    public abstract void DownAct();
+    public abstract void DownAttackA();
+    public abstract void DownAttackB();
 }
 
 [CreateAssetMenu]

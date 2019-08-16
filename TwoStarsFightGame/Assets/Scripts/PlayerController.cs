@@ -93,13 +93,28 @@ public class PlayerController : MonoBehaviour
                 player.currentWeapon.ModeChange();
             }
             //guard and parry
-            if (Input.GetButtonDown("Vertical" + playerControl + "P"))
+            if (vertical < 0)
             {
-
+                player.currentWeapon.DownAct();
+                playerState = PlayerState.Guard;
+                if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
+                {
+                    playerState = PlayerState.Attack;
+                    player.currentWeapon.DownAttackA();
+                }
+                if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
+                {
+                    playerState = PlayerState.Attack;
+                    player.currentWeapon.DownAttackB();
+                }
             }
-
         }
-
-        transform.position += new Vector3(horizontal, 0, 0) * speed * Time.deltaTime;
+        if (playerState == PlayerState.Guard && vertical >= 0)
+        {
+            skeleton.AnimationState.AddAnimation(0, "IDLE", true, 0);
+            skeleton.AnimationState.SetEmptyAnimation(1, 0);
+            playerState = PlayerState.Idle;
+        }
+        if (playerState != PlayerState.Guard) transform.position += new Vector3(horizontal, 0, 0) * speed * Time.deltaTime;
     }
 }

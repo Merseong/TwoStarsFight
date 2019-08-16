@@ -30,7 +30,6 @@ public class Default : Weapon, HandWeapon, Shield
             }));
         }));
         Debug.Log("Default AttackB");
-        canDamage = true;
     }
 
     public override void Break()
@@ -60,5 +59,42 @@ public class Default : Weapon, HandWeapon, Shield
     public void Parrying()
     {
         Debug.Log("Parrying");
+    }
+
+    public override void DownAttackA()
+    {
+        skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_2", false);
+        StartCoroutine(WaitTime(mode1Option.startTime, delegate {
+            canDamage = true;
+            StartCoroutine(WaitTime(mode1Option.animTime, delegate {
+                canDamage = false; equipPlayer.isAfterTime = true;
+                StartCoroutine(WaitTime(mode1Option.endTime, delegate {
+                    equipPlayer.isAfterTime = false;
+                    equipPlayer.playerController.playerState = PlayerState.Idle;
+                }));
+            }));
+        }));
+    }
+
+    public override void DownAttackB()
+    {
+        skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_3", false);
+        StartCoroutine(WaitTime(mode1Option.startTime, delegate {
+            canDamage = true;
+            StartCoroutine(WaitTime(mode1Option.animTime, delegate {
+                canDamage = false; equipPlayer.isAfterTime = true;
+                StartCoroutine(WaitTime(mode1Option.endTime, delegate {
+                    equipPlayer.isAfterTime = false;
+                    equipPlayer.playerController.playerState = PlayerState.Idle;
+                }));
+            }));
+        }));
+    }
+
+    public override void DownAct()
+    {
+        if (equipPlayer.playerController.playerState != PlayerState.Guard)
+            skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_1", false);
+        Guard();
     }
 }
