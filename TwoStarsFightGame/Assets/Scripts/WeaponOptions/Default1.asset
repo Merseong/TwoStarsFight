@@ -10,13 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Default
+  m_Name: Default1
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
-  weaponName: "\uAE30\uBCF8\uBB34\uAE30"
+  weaponName: Default
+  weaponType: 1
   damage: 1
-  minusDurability: 0
-  knockbackTime: 1
-  stiffTime: 1
+  minusDurability: 1
+  knockbackTime: 0.1
+  stiffTime: 0.1
   haveAction: 0
-  startTime: 0.1
-  endTime: 0.1
+  startTime: 0.2
+  endTime: 0.2
+  coolTime: 0.2

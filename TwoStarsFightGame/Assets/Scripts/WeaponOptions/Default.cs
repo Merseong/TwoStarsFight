@@ -4,38 +4,62 @@ using UnityEngine;
 
 public class Default : Weapon, HandWeapon, Shield
 {
-    public void Action()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public override void AttackA()
     {
-
+        if (isModeChanged)
+        {
+            //true 모드의 A 공격
+            Debug.Log("Attack");
+        }
+        else
+        {
+            //false 모드의 A공격
+            Debug.Log("Attack");
+        }
+        
     }
 
     public override void AttackB()
     {
-        throw new System.NotImplementedException();
+        if (isModeChanged)
+        {
+            //true 모드의 B 공격
+            Debug.Log("Attack");
+        }
+        else
+        {
+            //false 모드의 B 공격
+            Debug.Log("Attack");
+        }
     }
 
     public override void Break()
     {
         equipPlayer.currentWeapon = this as Weapon;
     }
+    public override void ModeChange()
+    {
+        this.isModeChanged = !this.isModeChanged;
+        return;
+    }
+
+    public void Action()
+    {
+        Debug.Log("Action");
+    }
+    public void SpecialAction()
+    {
+        Debug.Log("SpecialAction");
+    }
 
     public void Guard()
     {
-        throw new System.NotImplementedException();
-    }
-
-    public override void ModeChange()
-    {
-        return;
+        Debug.Log("Guard");
     }
 
     public void Parrying()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Parrying");
     }
 }

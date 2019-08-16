@@ -5,7 +5,7 @@ using UnityEngine;
 public enum WeaponType
 {
     NULL,
-    Hand,
+    HandWeapon,
     Range,
     Shield
 }
