@@ -36,8 +36,8 @@ public abstract class Weapon : MonoBehaviour
     public GameObject ArrowPrefab;
     public GameObject Arrow;
     public Transform ShotPosition;
-    public Transform BodyPosition;
-    public Vector2 Direction;
+    public bool isFlipped;
+
 
     [Space(10)]
     private Coroutine currentBreakCount;
@@ -52,19 +52,14 @@ public abstract class Weapon : MonoBehaviour
     protected bool canParry = false;
     protected bool canGuard = false;
 
-    public void Start()
-    {
-        ArrowPrefab = equipPlayer.ArrowPrefab;
-    }
+
     public void Update()
     {
         //if(equipPlayer!=null)
         //transform.position = equipPlayer.transform.position;
-        ShotPosition = equipPlayer.ShotPosition;
-        BodyPosition = equipPlayer.BodyPosition;
-        Direction = new Vector2(ShotPosition.position.x - BodyPosition.position.x, ShotPosition.position.y - BodyPosition.position.y);
+        isFlipped = equipPlayer.isFlipped;
     }
-    public void OnTriggerEnter2D(Collider2D col)
+    protected void OnTriggerEnter2D(Collider2D col)
     {
         //if (isItem)
         //{
