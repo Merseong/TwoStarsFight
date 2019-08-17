@@ -89,7 +89,6 @@ public class Default : Weapon, HandWeapon, Shield
                 StartCoroutine(WaitTime(mode2Option.endTime, delegate
                 {
                     equipPlayer.isAfterTime = false;
-                    Debug.Log(equipPlayer.playerController.playerState + "To Guard");
                     equipPlayer.playerController.playerState = PlayerState.Guard;
                 }));
             }));
