@@ -84,14 +84,17 @@ public class GameManager : SingletonBehaviour<GameManager> {
 
     private void YoureWinner(PlayerNumber playerNo) {
         winnerText.text = "게임종료!\n플레이어" + ((int)playerNo + 1) + "의 승리";
-        restartButton.onClick.AddListener(delegate { SceneManager.LoadScene("GameManager Test"); });
-        restartButton.gameObject.SetActive(true);
+        ActiveRestartButton();
     }
 
     public void TimeOver() {
         winnerText.text = "시간종료!\n무승부";
         restartButton.onClick.RemoveAllListeners();
-        restartButton.onClick.AddListener(delegate { SceneManager.LoadScene("GameManager Test"); });
+        ActiveRestartButton();
+    }
+
+    private void ActiveRestartButton() {
+        restartButton.onClick.AddListener(delegate { SceneManager.LoadScene(SceneManager.GetActiveScene().name); });
         restartButton.gameObject.SetActive(true);
     }
 }

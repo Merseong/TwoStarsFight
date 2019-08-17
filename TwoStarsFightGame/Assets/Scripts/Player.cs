@@ -24,18 +24,20 @@ public class Player : MonoBehaviour
 
     public bool DecreaseHP(int value)
     {
-        if (health <= value)
-        {
+        if (health <= value) {
             health = 0;
             IngameUIManager.inst.UpdatePlayerHP(health, playerNo);
             GameManager.inst.PlayerDead(playerNo);
             return false;
         }
-        else
-        {
-            health -= value;
-            IngameUIManager.inst.UpdatePlayerHP(health, playerNo);
-            return true;
+        health -= value;
+        IngameUIManager.inst.UpdatePlayerHP(health, playerNo);
+        return true;
+    }
+
+    void OnTriggerEnter(Collider other) {
+        if (other.tag == "DEADZONE") {
+            GameManager.inst.PlayerDead(playerNo);
         }
     }
 }
