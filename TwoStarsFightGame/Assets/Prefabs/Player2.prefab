@@ -166,6 +166,8 @@ MonoBehaviour:
   skeleton: {fileID: 6223308044425255649}
   ArrowPrefab: {fileID: 0}
   Arrow: {fileID: 0}
+  BoomerangPrefab: {fileID: 0}
+  Boomerang: {fileID: 0}
   ShotPosition: {fileID: 0}
   isFlipped: 0
   canDamage: 0
@@ -469,6 +471,8 @@ MonoBehaviour:
   skeleton: {fileID: 6223308044425255649}
   ArrowPrefab: {fileID: 0}
   Arrow: {fileID: 0}
+  BoomerangPrefab: {fileID: 0}
+  Boomerang: {fileID: 0}
   ShotPosition: {fileID: 3726973729162143862}
   isFlipped: 0
   canDamage: 0
@@ -1115,6 +1119,10 @@ MonoBehaviour:
   ArrowPrefab: {fileID: 7539722139990925827, guid: 31de4b8f1b107fe49b741d22a0814386,
     type: 3}
   Arrow: {fileID: 7539722139990925827, guid: 31de4b8f1b107fe49b741d22a0814386, type: 3}
+  BoomerangPrefab: {fileID: 2951319260144786694, guid: 8fb05c24633978e4c93e79d8831773a8,
+    type: 3}
+  Boomerang: {fileID: 2951319260144786694, guid: 8fb05c24633978e4c93e79d8831773a8,
+    type: 3}
   ShotPosition: {fileID: 3726973729162143862}
   isFlipped: 0
   canDamage: 0
@@ -2126,6 +2134,8 @@ MonoBehaviour:
   ArrowPrefab: {fileID: 7539722139990925827, guid: 31de4b8f1b107fe49b741d22a0814386,
     type: 3}
   Arrow: {fileID: 0}
+  BoomerangPrefab: {fileID: 0}
+  Boomerang: {fileID: 0}
   ShotPosition: {fileID: 3726973729162143862}
   isFlipped: 0
   canDamage: 0
@@ -2410,6 +2420,8 @@ MonoBehaviour:
   ArrowPrefab: {fileID: 7539722139990925827, guid: 31de4b8f1b107fe49b741d22a0814386,
     type: 3}
   Arrow: {fileID: 7539722139990925827, guid: 31de4b8f1b107fe49b741d22a0814386, type: 3}
+  BoomerangPrefab: {fileID: 0}
+  Boomerang: {fileID: 0}
   ShotPosition: {fileID: 3726973729162143862}
   isFlipped: 0
   canDamage: 0

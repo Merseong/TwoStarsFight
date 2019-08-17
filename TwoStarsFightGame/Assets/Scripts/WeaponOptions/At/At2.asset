@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: At2
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
   weaponName: AT_2
-  weaponType: 0
+  weaponType: 1
   damage: 20
-  minusDurability: 0
-  knockbackTime: 0
-  stiffTime: 0
+  minusDurability: 1
+  knockbackTime: 1
+  stiffTime: 1
   haveAction: 0
   startTime: 0.1
   _animTime: 1.3

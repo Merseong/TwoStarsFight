@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Euro2
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
   weaponName: EURO_2
-  weaponType: 0
-  damage: 0
-  minusDurability: 0
-  knockbackTime: 0
-  stiffTime: 0
+  weaponType: 1
+  damage: 1
+  minusDurability: 1
+  knockbackTime: 1
+  stiffTime: 1
   haveAction: 0
   startTime: 0
   _animTime: 0

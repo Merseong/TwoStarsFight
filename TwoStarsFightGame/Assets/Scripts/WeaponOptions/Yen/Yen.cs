@@ -37,11 +37,11 @@ public class Yen : Weapon, RangeWeapon, HandWeapon
             DecreaseDurability(mode2Option.minusDurability);
             skeleton.AnimationState.SetAnimation(1, "ATTACK_YEN_3", false);
             equipPlayer.playerController.playerState = PlayerState.Attack;
-            StartCoroutine(WaitTime(mode1Option.startTime, delegate
+            StartCoroutine(WaitTime(mode2Option.startTime, delegate
             {
                 canDamage = true;
 
-                StartCoroutine(WaitTime(mode1Option.animTime, delegate
+                StartCoroutine(WaitTime(mode2Option.animTime, delegate
                 {
                     canDamage = false; equipPlayer.isAfterTime = true;
                     StartCoroutine(WaitTime(mode1Option.endTime, delegate
@@ -92,11 +92,11 @@ public class Yen : Weapon, RangeWeapon, HandWeapon
 
                 canDamage = true;
 
-                StartCoroutine(WaitTime(mode1Option.animTime, delegate
+                StartCoroutine(WaitTime(mode2Option.animTime, delegate
                 {
 
                     canDamage = false; equipPlayer.isAfterTime = true;
-                    StartCoroutine(WaitTime(mode1Option.endTime, delegate
+                    StartCoroutine(WaitTime(mode2Option.endTime, delegate
                     {
                         equipPlayer.isAfterTime = false;
                         equipPlayer.playerController.playerState = PlayerState.Idle;
@@ -151,7 +151,7 @@ public class Yen : Weapon, RangeWeapon, HandWeapon
 
     public void Shoot(Vector2 start, Vector2 direction)
     {
-        Arrow = Instantiate(ArrowPrefab, start, Quaternion.identity);
+        Arrow = Instantiate(ArrowPrefab, start, Quaternion.Euler(0,0,90));
         Arrow.GetComponent<Rigidbody2D>().velocity = direction * 20f;
         Arrow.GetComponent<Arrow>().playerNo = equipPlayer.playerNo;
     }

@@ -61,7 +61,6 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
             equipPlayer.playerController.playerState = PlayerState.Attack;
             StartCoroutine(WaitTime(mode1Option.startTime, delegate
             {
-
                 canDamage = true;
                 StartCoroutine("ArrowRain");
                 StartCoroutine(WaitTime(mode1Option.animTime, delegate

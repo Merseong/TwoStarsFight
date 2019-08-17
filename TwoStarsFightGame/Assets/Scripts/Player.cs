@@ -87,11 +87,7 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            Equip(euroWeapon, 100);
-        }
-        else if (Input.GetKeyDown(KeyCode.Backspace))
+        if (Input.GetKeyDown(KeyCode.Backspace))
         {
             currentWeapon.Break();
         }
