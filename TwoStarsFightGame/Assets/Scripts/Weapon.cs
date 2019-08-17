@@ -83,7 +83,6 @@ public abstract class Weapon : MonoBehaviour
                 {
                     if (equipPlayer.playerController.playerState != PlayerState.Rush)
                     {
-                        Debug.Log("!Rush!");
                         col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage);
                         col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Stern;
                         StartCoroutine(WaitTime(mode1Option.stiffTime, delegate
@@ -93,7 +92,6 @@ public abstract class Weapon : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Rush!");
                         col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Stern;
                         StartCoroutine(WaitTime(mode2Option.stiffTime, delegate
                         {

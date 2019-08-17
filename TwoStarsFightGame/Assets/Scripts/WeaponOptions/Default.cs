@@ -7,6 +7,7 @@ public class Default : Weapon, HandWeapon, Shield
     public override void AttackA()
     {
         skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_1", false);
+        equipPlayer.playerController.playerState = PlayerState.Attack;
         StartCoroutine(WaitTime(mode1Option.startTime, delegate { canDamage = true;
             StartCoroutine(WaitTime(mode1Option.animTime, delegate { canDamage = false; equipPlayer.isAfterTime = true;
                 StartCoroutine(WaitTime(mode1Option.endTime, delegate { equipPlayer.isAfterTime = false;
@@ -19,6 +20,7 @@ public class Default : Weapon, HandWeapon, Shield
     public override void AttackB()
     {
         //skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_2", false);
+        equipPlayer.playerController.playerState = PlayerState.Attack;
         StartCoroutine(WaitTime(mode1Option.startTime, delegate {
             canDamage = true;
             StartCoroutine(WaitTime(mode1Option.animTime, delegate {
