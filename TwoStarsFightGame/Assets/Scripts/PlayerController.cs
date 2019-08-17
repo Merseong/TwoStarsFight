@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     // Start is called before the first frame update
     void Awake()
     {
@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity += new Vector2(0, jumpSpeed);
                 StartCoroutine(CheckGrounded());
             }
-            if (playerState != PlayerState.Attack)
+            if (playerState != PlayerState.Attack && playerState != PlayerState.Rush)
             {
                 //guard and parry
                 if (vertical < 0)
