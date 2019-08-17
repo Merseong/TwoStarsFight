@@ -7,7 +7,8 @@ public enum PlayerState
     Idle,
     Attack,
     Parry,
-    Guard
+    Guard,
+    Stern
 }
 
 public class PlayerController : MonoBehaviour
@@ -70,49 +71,43 @@ public class PlayerController : MonoBehaviour
                 animSeted = false;
             }
         }
-        if (Input.GetButtonDown("Jump" + playerControl + "P") &&IsGround)
+        else if(playerState == PlayerState.Stern)
         {
-            rb.velocity += new Vector2(0, jumpSpeed);
+            //implement animation of stern
         }
-        if (playerState != PlayerState.Attack)
+
+        if (playerState != PlayerState.Stern)
         {
-            if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
+            if (Input.GetButtonDown("Jump" + playerControl + "P") && IsGround)
             {
-                playerState = PlayerState.Attack;
-                player.currentWeapon.AttackA();
+                rb.velocity += new Vector2(0, jumpSpeed);
             }
-            if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
+            if (playerState != PlayerState.Attack)
             {
-                playerState = PlayerState.Attack;
-                player.currentWeapon.AttackB();
-            }
-            if (Input.GetButtonDown("ModeChange" + playerControl + "P"))
-            {
-                player.currentWeapon.ModeChange();
-            }
-            //guard and parry
-            if (vertical < 0)
-            {
-                player.currentWeapon.DownAct();
-                playerState = PlayerState.Guard;
                 if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
                 {
                     playerState = PlayerState.Attack;
-                    player.currentWeapon.DownAttackA();
+                    player.currentWeapon.AttackA();
                 }
                 if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
                 {
                     playerState = PlayerState.Attack;
-                    player.currentWeapon.DownAttackB();
+                    player.currentWeapon.AttackB();
                 }
+                if (Input.GetButtonDown("ModeChange" + playerControl + "P"))
+                {
+                    player.currentWeapon.ModeChange();
+                }
+                //guard and parry
+                if (Input.GetButtonDown("Vertical" + playerControl + "P"))
+                {
+                    Shield shield = (Shield)player.currentWeapon;
+                    shield.Parrying();
+                }
+
             }
+            transform.position += new Vector3(horizontal, 0, 0) * speed * Time.deltaTime;
         }
-        if (playerState == PlayerState.Guard && vertical >= 0)
-        {
-            skeleton.AnimationState.AddAnimation(0, "IDLE", true, 0);
-            skeleton.AnimationState.SetEmptyAnimation(1, 0);
-            playerState = PlayerState.Idle;
-        }
-        if (playerState != PlayerState.Guard) transform.position += new Vector3(horizontal, 0, 0) * speed * Time.deltaTime;
+
     }
 }
