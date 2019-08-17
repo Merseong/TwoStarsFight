@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Euro2
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
-  weaponName: Spear
-  weaponType: 1
-  damage: 1
+  weaponName: EURO_2
+  weaponType: 0
+  damage: 10
   minusDurability: 1
   knockbackTime: 1
   stiffTime: 1

@@ -6,13 +6,13 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
 {
     public override void AttackA()
     {
-            skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_1", false);
+            skeleton.AnimationState.SetAnimation(1, "ATTACK_EURO_1", false);
             StartCoroutine(WaitTime(mode1Option.startTime, delegate
             {
                 canDamage = true;
+                Shoot(ShotPosition.position, Direction);
                 StartCoroutine(WaitTime(mode1Option.animTime, delegate
                 {
-                    Shoot(ShotPosition.position, Direction);
                     canDamage = false; equipPlayer.isAfterTime = true;
                     StartCoroutine(WaitTime(mode1Option.endTime, delegate
                     {
@@ -27,6 +27,7 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
 
     public override void AttackB()
     {
+        skeleton.AnimationState.SetAnimation(1, "ATTACK_EURO_2", false);
         StartCoroutine(WaitTime(mode1Option.startTime, delegate {
             canDamage = true;
             StartCoroutine(WaitTime(mode1Option.animTime, delegate {

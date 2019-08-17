@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Euro1
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
-  weaponName: CrossBow
+  weaponName: EURO_1
   weaponType: 2
-  damage: 1
+  damage: 10
   minusDurability: 1
   knockbackTime: 1
   stiffTime: 1
