@@ -19,6 +19,8 @@ public class At : Weapon, HandWeapon, Shield
         if (isModeChanged)
         {
             skeleton.AnimationState.SetAnimation(1, "ATTACK_AT_1", false);
+
+            equipPlayer.playerController.playerState = PlayerState.Attack;
             StartCoroutine(WaitTime(mode1Option.startTime, delegate
             {
                 canDamage = true;
@@ -44,6 +46,7 @@ public class At : Weapon, HandWeapon, Shield
         if (isModeChanged)
         {
             skeleton.AnimationState.SetAnimation(1, "ATTACK_AT_2", false);
+            equipPlayer.playerController.playerState = PlayerState.Attack;
             StartCoroutine(WaitTime(mode1Option.startTime, delegate {
                 canDamage = true;
                 StartCoroutine(WaitTime(mode1Option.animTime, delegate {
