@@ -10,15 +10,18 @@ public class ItemSpawner : MonoBehaviour
 
     public Sprite[] weaponSprites;
 
+    private float lastTime;
+
     private void Update()
     {
-        if (!isWeaponSpawned)
+        if (!isWeaponSpawned && lastTime + 10 < Time.time)
         {
             var box = Instantiate(weaponBox, transform);
             isWeaponSpawned = true;
             box.GetComponent<WeaponBox>().parent = this;
             box.GetComponent<WeaponBox>().inside = (WeaponName)Random.Range(1, 5);
             box.GetComponent<SpriteRenderer>().sprite = weaponSprites[(int)box.GetComponent<WeaponBox>().inside];
+            lastTime = Time.time;
         }
     }
 }
