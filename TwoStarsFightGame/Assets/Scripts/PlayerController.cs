@@ -99,10 +99,25 @@ public class PlayerController : MonoBehaviour
                     player.currentWeapon.ModeChange();
                 }
                 //guard and parry
-                if (Input.GetButtonDown("Vertical" + playerControl + "P"))
+                /*if (Input.GetButtonDown("Vertical" + playerControl + "P"))
                 {
                     Shield shield = (Shield)player.currentWeapon;
                     shield.Parrying();
+                }*/
+                if (vertical < 0)
+                {
+                    player.currentWeapon.DownAct();
+                    playerState = PlayerState.Guard;
+                    if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
+                    {
+                        //playerState = PlayerState.Attack;
+                        player.currentWeapon.DownAttackA();
+                    }
+                    if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
+                    {
+                        playerState = PlayerState.Guard;
+                        player.currentWeapon.DownAttackB();
+                    }
                 }
 
             }

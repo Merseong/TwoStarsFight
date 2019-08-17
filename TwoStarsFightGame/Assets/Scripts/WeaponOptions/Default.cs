@@ -75,15 +75,17 @@ public class Default : Weapon, HandWeapon, Shield
             }));
         }));
     }
-
     public override void DownAttackA()
     {
         skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_2", false);
-        StartCoroutine(WaitTime(mode1Option.startTime, delegate {
-            canDamage = true;
-            StartCoroutine(WaitTime(mode1Option.animTime, delegate {
-                canDamage = false; equipPlayer.isAfterTime = true;
-                StartCoroutine(WaitTime(mode1Option.endTime, delegate {
+        StartCoroutine(WaitTime(mode2Option.startTime, delegate
+        {
+            StartCoroutine(WaitTime(mode2Option.animTime, delegate
+            {
+                equipPlayer.playerController.playerState = PlayerState.Parry;
+                equipPlayer.isAfterTime = true;
+                StartCoroutine(WaitTime(mode2Option.endTime, delegate
+                {
                     equipPlayer.isAfterTime = false;
                     equipPlayer.playerController.playerState = PlayerState.Idle;
                 }));
@@ -94,11 +96,14 @@ public class Default : Weapon, HandWeapon, Shield
     public override void DownAttackB()
     {
         skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_3", false);
-        StartCoroutine(WaitTime(mode1Option.startTime, delegate {
+        StartCoroutine(WaitTime(mode2Option.startTime, delegate
+        {
             canDamage = true;
-            StartCoroutine(WaitTime(mode1Option.animTime, delegate {
+            StartCoroutine(WaitTime(mode2Option.animTime, delegate
+            {
                 canDamage = false; equipPlayer.isAfterTime = true;
-                StartCoroutine(WaitTime(mode1Option.endTime, delegate {
+                StartCoroutine(WaitTime(mode2Option.endTime, delegate
+                {
                     equipPlayer.isAfterTime = false;
                     equipPlayer.playerController.playerState = PlayerState.Idle;
                 }));
@@ -113,3 +118,4 @@ public class Default : Weapon, HandWeapon, Shield
         Guard();
     }
 }
+
