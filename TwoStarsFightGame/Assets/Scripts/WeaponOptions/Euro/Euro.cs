@@ -37,7 +37,7 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
             StartCoroutine(WaitTime(mode2Option.startTime, delegate
             {
                 canDamage = true;
-
+                DecreaseDurability(mode2Option.minusDurability);
                 StartCoroutine(WaitTime(mode2Option.animTime, delegate
                 {
                     canDamage = false; equipPlayer.isAfterTime = true;
@@ -224,7 +224,7 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
 
     public void boomerangShoot(Vector2 direction)
     {
-        DecreaseDurability(mode1Option.minusDurability);
+        DecreaseDurability(mode2Option.minusDurability);
         Boomerang = Instantiate(BoomerangPrefab, ShotPosition.position, Quaternion.identity);
         Boomerang.GetComponent<Rigidbody2D>().velocity = direction * 20f;
         Boomerang.GetComponent<Boomerang>().playerNo = equipPlayer.playerNo;
