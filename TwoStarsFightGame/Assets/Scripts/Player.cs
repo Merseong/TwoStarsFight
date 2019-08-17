@@ -46,8 +46,30 @@ public class Player : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "DEADZONE") {
+        if (other.CompareTag("DEADZONE")) {
             GameManager.inst.PlayerDead(playerNo);
+        }
+        else if (other.CompareTag("WeaponBox"))
+        {
+            switch(other.GetComponent<WeaponBox>().inside)
+            {
+                case WeaponName.AT:
+                    Equip(atWeapon, 100);
+                    break;
+                case WeaponName.EURO:
+                    Equip(euroWeapon, 100);
+                    break;
+                case WeaponName.MALE:
+                    Equip(marsWeapon, 100);
+                    break;
+                case WeaponName.YEN:
+                    Equip(yenWeapon, 100);
+                    break;
+                default:
+                    break;
+            }
+            other.GetComponent<WeaponBox>().parent.isWeaponSpawned = false;
+            Destroy(other.gameObject);
         }
     }
 

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Body
   - DEADZONE
+  - WeaponBox
   layers:
   - Default
   - TransparentFX

@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.Jump;
         skeleton.AnimationState.SetAnimation(0, "JUMP", false);
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.2f);
         while (!IsGround)
         {
             yield return null;
