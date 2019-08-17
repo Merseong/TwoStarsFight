@@ -11,13 +11,13 @@ public enum WeaponType
     Shield
 }
 
-public enum WeaponState
+/*public enum WeaponState
 {
     Idle,
     Start,
     Attack,
     End
-}
+}*/
 
 public abstract class Weapon : MonoBehaviour
 {
@@ -25,7 +25,8 @@ public abstract class Weapon : MonoBehaviour
     public bool isItem = true;
 
     [Header("When Weapon Mode")]
-    public WeaponState weaponState = WeaponState.Idle;
+    //public WeaponState weaponState = WeaponState.Idle;
+    public WeaponType weaponType;
     public bool isModeChanged = false;
     public Player equipPlayer = null;
     public int durability = 100;
@@ -44,6 +45,8 @@ public abstract class Weapon : MonoBehaviour
     // 타격 성공시 canDamage를 false로 만듬
     // 후딜 시작시 canDamage를 false로 만듬
     protected bool canDamage = false;
+    protected bool canParry = false;
+    protected bool canGuard = false;
 
     public void Update()
     {
@@ -65,9 +68,29 @@ public abstract class Weapon : MonoBehaviour
         {
             if (col.CompareTag("Body") && col.GetComponentInParent<Player>().playerNumber != equipPlayer.playerNumber)
             {
-                Debug.Log("Damaged");
-                col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage);
-                canDamage = false;
+                if (col.GetComponentInParent<Player>().playerController.playerState == PlayerState.Parry)
+                {
+                    equipPlayer.playerController.playerState = PlayerState.Stern;
+                    canDamage = false;
+                    StartCoroutine(WaitTime(mode2Option.stiffTime, delegate
+                    {
+                        equipPlayer.playerController.playerState = PlayerState.Idle;
+                    }));
+                }
+                else if (col.GetComponentInParent<Player>().playerController.playerState == PlayerState.Guard)
+                {
+
+                }
+                else
+                {
+                    col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage);
+                    col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Stern;
+                    StartCoroutine(WaitTime(mode1Option.stiffTime, delegate
+                    {
+                        col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Idle;
+                    }));
+                    canDamage = false;
+                }
             }
         }
 

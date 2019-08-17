@@ -7,7 +7,8 @@ public enum PlayerState
     Idle,
     Attack,
     Parry,
-    Guard
+    Guard,
+    Stern
 }
 
 public class PlayerController : MonoBehaviour
@@ -72,34 +73,43 @@ public class PlayerController : MonoBehaviour
                 animSeted = false;
             }
         }
-        if (Input.GetButtonDown("Jump" + playerControl + "P") &&IsGround)
+        else if(playerState == PlayerState.Stern)
         {
-            rb.velocity += new Vector2(0, jumpSpeed);
-        }
-        if (playerState != PlayerState.Attack)
-        {
-            if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
-            {
-                playerState = PlayerState.Attack;
-                player.currentWeapon.AttackA();
-            }
-            if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
-            {
-                playerState = PlayerState.Attack;
-                player.currentWeapon.AttackB();
-            }
-            if (Input.GetButtonDown("ModeChange" + playerControl + "P"))
-            {
-                player.currentWeapon.ModeChange();
-            }
-            //guard and parry
-            if (Input.GetButtonDown("Vertical" + playerControl + "P"))
-            {
-
-            }
-
+            //implement animation of stern
         }
 
-        transform.position += new Vector3(horizontal, 0, 0) * speed * Time.deltaTime;
+        if (playerState != PlayerState.Stern)
+        {
+            if (Input.GetButtonDown("Jump" + playerControl + "P") && IsGround)
+            {
+                rb.velocity += new Vector2(0, jumpSpeed);
+            }
+            if (playerState != PlayerState.Attack)
+            {
+                if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
+                {
+                    playerState = PlayerState.Attack;
+                    player.currentWeapon.AttackA();
+                }
+                if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
+                {
+                    playerState = PlayerState.Attack;
+                    player.currentWeapon.AttackB();
+                }
+                if (Input.GetButtonDown("ModeChange" + playerControl + "P"))
+                {
+                    player.currentWeapon.ModeChange();
+                }
+                //guard and parry
+                if (Input.GetButtonDown("Vertical" + playerControl + "P"))
+                {
+                    Shield shield = (Shield)player.currentWeapon;
+                    shield.Parrying();
+                }
+
+            }
+            transform.position += new Vector3(horizontal, 0, 0) * speed * Time.deltaTime;
+        }
+
     }
 }

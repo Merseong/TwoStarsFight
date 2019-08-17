@@ -39,7 +39,7 @@ public class Default : Weapon, HandWeapon, Shield
     }
     public override void ModeChange()
     {
-        this.isModeChanged = !this.isModeChanged;
+        isModeChanged = !isModeChanged;
         return;
     }
 
@@ -54,11 +54,26 @@ public class Default : Weapon, HandWeapon, Shield
 
     public void Guard()
     {
-        Debug.Log("Guard");
+
     }
 
     public void Parrying()
     {
-        Debug.Log("Parrying");
+        //mode2Option == information of default shield
+        //start delay -> parrying -> end delay
+        //skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_1", false);
+        StartCoroutine(WaitTime(mode2Option.startTime, delegate
+        {
+            StartCoroutine(WaitTime(mode2Option.animTime, delegate
+            {
+                equipPlayer.playerController.playerState=PlayerState.Parry;
+                equipPlayer.isAfterTime = true;
+                StartCoroutine(WaitTime(mode2Option.endTime, delegate
+                {
+                    equipPlayer.isAfterTime = false;
+                    equipPlayer.playerController.playerState = PlayerState.Idle;
+                }));
+            }));
+        }));
     }
 }
