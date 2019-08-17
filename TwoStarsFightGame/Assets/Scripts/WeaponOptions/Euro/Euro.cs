@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Euro : Weapon, RangeWeapon, HandWeapon
 {
+    public CircleCollider2D defaultCol;
     public override void AttackA()
     {
         skeleton.AnimationState.SetAnimation(1, "ATTACK_EURO_1", false);
