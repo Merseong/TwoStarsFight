@@ -25,7 +25,7 @@ public class CameraManager : MonoBehaviour {
             float camsize = Mathf.Max(distanceX, distanceY) / playerDistanceInit * initCamSize;
             cam.orthographicSize = Mathf.Max(minCamSize, camsize);
         } catch {
-            transform.position = Vector3.zero;
+            transform.position = new Vector3(0,0,-10);
             cam.orthographicSize = initCamSize;
         }
     }
