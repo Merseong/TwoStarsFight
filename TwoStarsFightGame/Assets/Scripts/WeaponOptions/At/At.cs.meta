@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6151ccbaf1ec6ee439c6bd6edd2a33d0
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - equipPlayer: {instanceID: 0}
+  - mode1Option: {fileID: 11400000, guid: e0405fce57c299942a3d8bfe1124af5f, type: 2}
+  - mode2Option: {fileID: 11400000, guid: 1155740e26a23a1428eaee0154d02017, type: 2}
+  - skeleton: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Default1
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
-  weaponName: "\uAE30\uBCF8\uBB34\uAE30"
+  weaponName: BASIC
   weaponType: 1
   damage: 10
   minusDurability: 0

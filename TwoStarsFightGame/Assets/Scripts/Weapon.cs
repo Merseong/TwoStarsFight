@@ -21,9 +21,6 @@ public enum WeaponState
 
 public abstract class Weapon : MonoBehaviour
 {
-    [Header("When Item Mode")]
-    public bool isItem = true;
-
     [Header("When Weapon Mode")]
     public WeaponState weaponState = WeaponState.Idle;
     public bool isModeChanged = false;
@@ -43,6 +40,7 @@ public abstract class Weapon : MonoBehaviour
     // 선딜 후 canDamage를 true로 만듬
     // 타격 성공시 canDamage를 false로 만듬
     // 후딜 시작시 canDamage를 false로 만듬
+    [SerializeField]
     protected bool canDamage = false;
 
     public void Update()
@@ -52,17 +50,19 @@ public abstract class Weapon : MonoBehaviour
     }
     public void OnTriggerEnter2D(Collider2D col)
     {
-        if (isItem)
+        //if (isItem)
+        //{
+        //    Debug.Log("OntriggerOn");
+        //    isItem = false;
+        //    //GetComponent<Collider2D>().enabled = false;
+        //    equipPlayer = col.GetComponent<Player>();
+        //    equipPlayer.Equip(this);
+        //    
+        //}
+        //else 이 윗부분은 따로 프리팹으로 만들어야될듯
+        if (canDamage)
         {
-            Debug.Log("OntriggerOn");
-            isItem = false;
-            //GetComponent<Collider2D>().enabled = false;
-            equipPlayer = col.GetComponent<Player>();
-            equipPlayer.Equip(this);
-            currentBreakCount = StartCoroutine(ItemBreakCount());
-        }
-        else if (canDamage)
-        {
+            Debug.Log("Hit");
             if (col.CompareTag("Body") && col.GetComponentInParent<Player>().playerNumber != equipPlayer.playerNumber)
             {
                 Debug.Log("Damaged");
@@ -70,7 +70,12 @@ public abstract class Weapon : MonoBehaviour
                 canDamage = false;
             }
         }
+    }
 
+    public void OnEquip(int dura)
+    {
+        durability = dura;
+        currentBreakCount = StartCoroutine(ItemBreakCount());
     }
 
     public void DropWeapon()
@@ -78,7 +83,6 @@ public abstract class Weapon : MonoBehaviour
         StopCoroutine(currentBreakCount);
         equipPlayer = null;
         //GetComponent<Collider>().enable = true;
-        isItem = true;
     }
 
     public void DecreaseDurability(int value)
