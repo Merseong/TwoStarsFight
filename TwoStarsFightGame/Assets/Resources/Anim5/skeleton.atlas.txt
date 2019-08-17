@@ -1,0 +1,118 @@
+
+skeleton.png
+size: 2048,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Arrow
+  rotate: false
+  xy: 154, 25
+  size: 77, 60
+  orig: 77, 60
+  offset: 0, 0
+  index: -1
+BasicShield
+  rotate: true
+  xy: 602, 76
+  size: 165, 199
+  orig: 165, 199
+  offset: 0, 0
+  index: -1
+BasicShield2
+  rotate: true
+  xy: 803, 76
+  size: 165, 191
+  orig: 165, 199
+  offset: 0, 7
+  index: -1
+BasicSword
+  rotate: true
+  xy: 602, 58
+  size: 16, 120
+  orig: 16, 120
+  offset: 0, 0
+  index: -1
+Body1
+  rotate: true
+  xy: 1475, 121
+  size: 120, 197
+  orig: 120, 197
+  offset: 0, 0
+  index: -1
+Body2
+  rotate: true
+  xy: 1674, 123
+  size: 118, 186
+  orig: 120, 190
+  offset: 1, 0
+  index: -1
+Body3
+  rotate: true
+  xy: 1236, 34
+  size: 102, 181
+  orig: 120, 190
+  offset: 8, 2
+  index: -1
+Bow
+  rotate: true
+  xy: 1862, 111
+  size: 130, 182
+  orig: 131, 182
+  offset: 0, 0
+  index: -1
+Crossbow
+  rotate: true
+  xy: 362, 49
+  size: 192, 238
+  orig: 192, 238
+  offset: 0, 0
+  index: -1
+Face1
+  rotate: true
+  xy: 2, 2
+  size: 83, 150
+  orig: 83, 150
+  offset: 0, 0
+  index: -1
+Face2
+  rotate: false
+  xy: 996, 23
+  size: 185, 109
+  orig: 185, 109
+  offset: 0, 0
+  index: -1
+Face3
+  rotate: true
+  xy: 1419, 17
+  size: 102, 104
+  orig: 106, 109
+  offset: 0, 2
+  index: -1
+Limb1
+  rotate: false
+  xy: 1183, 32
+  size: 51, 100
+  orig: 51, 100
+  offset: 0, 0
+  index: -1
+MaleSpear
+  rotate: true
+  xy: 996, 134
+  size: 107, 238
+  orig: 192, 238
+  offset: 44, 0
+  index: -1
+MaleSword
+  rotate: true
+  xy: 2, 87
+  size: 154, 358
+  orig: 192, 400
+  offset: 20, 0
+  index: -1
+YenSpear
+  rotate: true
+  xy: 1236, 138
+  size: 103, 237
+  orig: 192, 238
+  offset: 41, 0
+  index: -1

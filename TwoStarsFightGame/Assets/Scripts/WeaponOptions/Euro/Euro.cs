@@ -105,7 +105,7 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
 
     public override void Break()
     {
-        equipPlayer.currentWeapon = this as Weapon;
+        equipPlayer.Equip(equipPlayer.defaultWeapon, 100);
     }
     public override void ModeChange()
     {
@@ -127,76 +127,27 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
 
     }
 
-    public void Parrying()
-    {
-        //mode2Option == information of default shield
-        //start delay -> parrying -> end delay
-        //skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_1", false);
-
-        StartCoroutine(WaitTime(mode2Option.startTime, delegate
-        {
-            StartCoroutine(WaitTime(mode2Option.animTime, delegate
-            {
-                equipPlayer.playerController.playerState = PlayerState.Parry;
-                equipPlayer.isAfterTime = true;
-                StartCoroutine(WaitTime(mode2Option.endTime, delegate
-                {
-                    equipPlayer.isAfterTime = false;
-                    equipPlayer.playerController.playerState = PlayerState.Idle;
-                }));
-            }));
-        }));
-    }
     public override void DownAttackA()
     {
-        skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_2", false);
-        equipPlayer.playerController.playerState = PlayerState.Attack;
-        StartCoroutine(WaitTime(mode2Option.startTime, delegate
-        {
-            StartCoroutine(WaitTime(mode2Option.animTime, delegate
-            {
-                equipPlayer.playerController.playerState = PlayerState.Parry;
-                equipPlayer.isAfterTime = true;
-                StartCoroutine(WaitTime(mode2Option.endTime, delegate
-                {
-                    equipPlayer.isAfterTime = false;
-                    equipPlayer.playerController.playerState = PlayerState.Idle;
-                }));
-            }));
-        }));
+        equipPlayer.defaultWeapon.DownAttackA();
     }
 
     public override void DownAttackB()
     {
-        skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_3", false);
-        equipPlayer.playerController.playerState = PlayerState.Attack;
-        StartCoroutine(WaitTime(mode2Option.startTime, delegate
-        {
-            canDamage = true;
-            StartCoroutine(WaitTime(mode2Option.animTime, delegate
-            {
-                canDamage = false; equipPlayer.isAfterTime = true;
-                StartCoroutine(WaitTime(mode2Option.endTime, delegate
-                {
-                    equipPlayer.isAfterTime = false;
-                    equipPlayer.playerController.playerState = PlayerState.Idle;
-                }));
-            }));
-        }));
+        equipPlayer.defaultWeapon.DownAttackB();
     }
+
 
     public override void DownAct()
     {
-        if (equipPlayer.playerController.playerState != PlayerState.Guard)
-            skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_1", false);
-        Guard();
+        equipPlayer.defaultWeapon.DownAct();
     }
 
     public void Shoot(Vector2 start, Vector2 direction)
     {
         DecreaseDurability(mode1Option.minusDurability);
         Arrow = Instantiate(ArrowPrefab, start, Quaternion.Euler(0,0,90));
-        Arrow.GetComponent<Rigidbody2D>().velocity = direction * 20f;
+        Arrow.GetComponent<Rigidbody2D>().AddForce(direction * 20f, ForceMode2D.Impulse);
         Arrow.GetComponent<Arrow>().playerNo = equipPlayer.playerNo;
     }
 
@@ -204,7 +155,7 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
     {
         DecreaseDurability(mode1Option.minusDurability);
         Arrow = Instantiate(ArrowPrefab, start, Quaternion.identity);
-        Arrow.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        Arrow.GetComponent<Rigidbody2D>().AddForce(direction * speed, ForceMode2D.Impulse);
         Arrow.GetComponent<Arrow>().playerNo = equipPlayer.playerNo;
     }
 

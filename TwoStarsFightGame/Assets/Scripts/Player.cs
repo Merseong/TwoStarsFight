@@ -22,6 +22,12 @@ public class Player : MonoBehaviour
     public Weapon euroWeapon;
     public bool isFlipped;
 
+    [Header("Weapon points in body")]
+    public Transform marsSpear;
+    public Transform marsSword;
+    public Transform yenSpear;
+    public Transform yenCrossBow;
+
     public void Equip(Weapon weapon, int durability)
     {
         if (weapon != null)
@@ -63,6 +69,7 @@ public class Player : MonoBehaviour
         }
         else if (other.CompareTag("WeaponBox"))
         {
+            OffAllCol();
             switch(other.GetComponent<WeaponBox>().inside)
             {
                 case WeaponName.AT:

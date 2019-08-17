@@ -118,6 +118,8 @@ public class Yen : Weapon, RangeWeapon, HandWeapon
             skeleton.AnimationState.SetAnimation(4, "WEAPON_" + mode2Option.weaponName, false);
             skeleton.AnimationState.SetEmptyAnimation(1, 0);
             equipPlayer.OffAllCol();
+            transform.SetParent(equipPlayer.yenSpear);
+            transform.localPosition = Vector3.zero;
             defaultCol.enabled = true;
         }
         else
@@ -126,6 +128,8 @@ public class Yen : Weapon, RangeWeapon, HandWeapon
             skeleton.AnimationState.SetAnimation(4, "WEAPON_" + mode1Option.weaponName, false);
             skeleton.AnimationState.SetEmptyAnimation(1, 0);
             equipPlayer.OffAllCol();
+            transform.SetParent(equipPlayer.yenCrossBow);
+            transform.localPosition = Vector3.zero;
         }
         return;
     }
@@ -152,7 +156,7 @@ public class Yen : Weapon, RangeWeapon, HandWeapon
     public void Shoot(Vector2 start, Vector2 direction)
     {
         Arrow = Instantiate(ArrowPrefab, start, Quaternion.identity);
-        Arrow.GetComponent<Rigidbody2D>().velocity = direction * 20f;
+        Arrow.GetComponent<Rigidbody2D>().AddForce(direction * 20f, ForceMode2D.Impulse);
         Arrow.GetComponent<Arrow>().playerNo = equipPlayer.playerNo;
     }
 

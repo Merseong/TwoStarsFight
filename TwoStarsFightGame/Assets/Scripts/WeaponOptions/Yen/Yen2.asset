@@ -20,6 +20,6 @@ MonoBehaviour:
   stiffTime: 0
   haveAction: 0
   startTime: 0
-  _animTime: 0
+  _animTime: 1
   endTime: 0
   coolTime: 0

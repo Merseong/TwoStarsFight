@@ -7,6 +7,7 @@ public class Default : Weapon, HandWeapon, Shield
     public BoxCollider2D defaultCol;
     public override void AttackA()
     {
+        defaultCol.enabled = true;
         skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_1", false);
         equipPlayer.playerController.playerState = PlayerState.Attack;
         StartCoroutine(WaitTime(mode1Option.startTime, delegate { canDamage = true;
@@ -20,6 +21,7 @@ public class Default : Weapon, HandWeapon, Shield
 
     public override void AttackB()
     {
+        defaultCol.enabled = true;
         equipPlayer.playerController.playerState = PlayerState.Attack;
         skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_2", false);
         StartCoroutine(WaitTime(mode1Option.startTime, delegate {
@@ -35,9 +37,9 @@ public class Default : Weapon, HandWeapon, Shield
 
     public override void Break()
     {
-        equipPlayer.currentWeapon = this as Weapon;
         equipPlayer.OffAllCol();
         defaultCol.enabled = true;
+        durability = 100;
     }
     public override void ModeChange()
     {

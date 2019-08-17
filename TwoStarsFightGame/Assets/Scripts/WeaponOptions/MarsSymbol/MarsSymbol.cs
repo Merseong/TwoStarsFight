@@ -133,6 +133,8 @@ public class MarsSymbol : Weapon, HandWeapon
             skeleton.AnimationState.SetAnimation(4, "WEAPON_" + mode2Option.weaponName, false);
             skeleton.AnimationState.SetEmptyAnimation(1, 0);
             equipPlayer.OffAllCol();
+            transform.SetParent(equipPlayer.marsSword);
+            transform.localPosition = Vector3.zero;
             defaultCol.enabled = true;
             defaultCol.transform.localScale = default2Size;
         }
@@ -142,6 +144,8 @@ public class MarsSymbol : Weapon, HandWeapon
             skeleton.AnimationState.SetAnimation(4, "WEAPON_" + mode1Option.weaponName, false);
             skeleton.AnimationState.SetEmptyAnimation(1, 0);
             equipPlayer.OffAllCol();
+            transform.SetParent(equipPlayer.marsSpear);
+            transform.localPosition = Vector3.zero;
             defaultCol.enabled = true;
             defaultCol.transform.localScale = new Vector2(1, 1);
         }

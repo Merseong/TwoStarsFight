@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class CameraManager : MonoBehaviour {
     private Camera cam;
-    public float initCamSize = 5;
-    public float minCamSize = 3;
+    public float initCamSize = 7;
+    public float minCamSize = 5;
     private float playerDistanceInit;
 
     void Awake() {
@@ -20,7 +20,7 @@ public class CameraManager : MonoBehaviour {
     void Update() {
         try {
             Vector3 p1 = GameManager.inst.currentPlayer[0].transform.position, p2 = GameManager.inst.currentPlayer[1].transform.position;
-            transform.position = new Vector3((p1.x + p2.x) / 2, (p1.y + p2.y) / 2 + 1, -10);
+            transform.position = new Vector3((p1.x + p2.x) / 2, (p1.y + p2.y) / 2 + 2, -10);
             float distanceX = Mathf.Abs(p1.x - p2.x), distanceY = Mathf.Abs(p1.y - p2.y);
             float camsize = Mathf.Max(distanceX, distanceY) / playerDistanceInit * initCamSize;
             cam.orthographicSize = Mathf.Max(minCamSize, camsize);

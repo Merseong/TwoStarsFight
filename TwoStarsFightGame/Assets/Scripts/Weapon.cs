@@ -117,6 +117,16 @@ public abstract class Weapon : MonoBehaviour
     public void OnEquip(int dura)
     {
         durability = dura;
+        if (this is MarsSymbol)
+        {
+            transform.SetParent(equipPlayer.marsSpear);
+            transform.localPosition = Vector3.zero;
+        }
+        else if (this is Yen)
+        {
+            transform.SetParent(equipPlayer.yenCrossBow);
+            transform.localPosition = Vector3.zero;
+        }
         currentBreakCount = StartCoroutine(ItemBreakCount());
     }
 
