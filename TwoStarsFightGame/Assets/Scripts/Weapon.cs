@@ -65,13 +65,11 @@ public abstract class Weapon : MonoBehaviour
         //else 이 윗부분은 따로 프리팹으로 만들어야될듯
         if (canDamage)
         {
-            Debug.Log("Hit");
             if (col.CompareTag("Body") && col.GetComponentInParent<Player>().playerNumber != equipPlayer.playerNumber)
             {
                 if (col.GetComponentInParent<Player>().playerController.playerState == PlayerState.Parry)
                 {
                     equipPlayer.playerController.playerState = PlayerState.Stern;
-                    canDamage = false;
                     StartCoroutine(WaitTime(mode2Option.stiffTime, delegate
                     {
                         equipPlayer.playerController.playerState = PlayerState.Idle;
@@ -79,16 +77,27 @@ public abstract class Weapon : MonoBehaviour
                 }
                 else if (col.GetComponentInParent<Player>().playerController.playerState == PlayerState.Guard)
                 {
-
+                    col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage - 5);
                 }
                 else
                 {
-                    col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage);
-                    col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Stern;
-                    StartCoroutine(WaitTime(mode1Option.stiffTime, delegate
+                    if (equipPlayer.playerController.playerState != PlayerState.Rush)
                     {
-                        col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Idle;
-                    }));
+                        col.GetComponentInParent<Player>().DecreaseHP(mode1Option.damage);
+                        col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Stern;
+                        StartCoroutine(WaitTime(mode1Option.stiffTime, delegate
+                        {
+                            col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Idle;
+                        }));
+                    }
+                    else
+                    {
+                        col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Stern;
+                        StartCoroutine(WaitTime(mode2Option.stiffTime, delegate
+                        {
+                            col.GetComponentInParent<Player>().playerController.playerState = PlayerState.Idle;
+                        }));
+                    }
                     canDamage = false;
                 }
             }
@@ -190,5 +199,4 @@ public interface HandWeapon
 public interface Shield
 {
     void Guard();
-    void Parrying();
 }
