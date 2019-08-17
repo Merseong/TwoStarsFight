@@ -8,6 +8,7 @@ public class IngameUIManager : SingletonBehaviour<IngameUIManager>
 {
     public Text playtimeText;
     public GameObject hpPrefab;
+    public Text p1WeaponDurability, p2WeaponDurability;
 
     public Image[,] Player_hp = new Image[2,100];
 
@@ -57,5 +58,13 @@ public class IngameUIManager : SingletonBehaviour<IngameUIManager>
             }
 
         }
+    }
+    void Update() {
+        p1WeaponDurability.text = "";
+        p2WeaponDurability.text = "";
+        int p1wd = GameManager.inst.currentPlayer[0].currentWeapon.durability / 10;
+        int p2wd = GameManager.inst.currentPlayer[1].currentWeapon.durability / 10;
+        for (int i = 0; i < p1wd; i++) p1WeaponDurability.text += ">";
+        for (int i = 0; i < p2wd; i++) p2WeaponDurability.text += "<";
     }
 }

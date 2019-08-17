@@ -554,11 +554,6 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8048009541582618300, guid: 15b2882c005250544b3be63411c9cf4e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 3365438338108321287, guid: 15b2882c005250544b3be63411c9cf4e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -658,6 +653,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.95127624
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048009541582618300, guid: 15b2882c005250544b3be63411c9cf4e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b2882c005250544b3be63411c9cf4e, type: 3}
@@ -2880,11 +2880,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.9530058
       objectReference: {fileID: 0}
-    - target: {fileID: 8048009541582618300, guid: 15b2882c005250544b3be63411c9cf4e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 3365438338108321287, guid: 15b2882c005250544b3be63411c9cf4e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2984,6 +2979,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.95127624
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048009541582618300, guid: 15b2882c005250544b3be63411c9cf4e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b2882c005250544b3be63411c9cf4e, type: 3}
@@ -3311,7 +3311,7 @@ PlatformEffector2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RotationalOffset: 90
-  m_UseOneWay: 0
+  m_UseOneWay: 1
   m_UseOneWayGrouping: 0
   m_SurfaceArc: 180
   m_UseSideFriction: 0
@@ -3766,11 +3766,6 @@ PrefabInstance:
       propertyPath: m_LocalRotation.w
       value: 0.96807545
       objectReference: {fileID: 0}
-    - target: {fileID: 8048009541582618300, guid: 15b2882c005250544b3be63411c9cf4e,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 3365438338108321287, guid: 15b2882c005250544b3be63411c9cf4e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3870,6 +3865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.95127624
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048009541582618300, guid: 15b2882c005250544b3be63411c9cf4e,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 15b2882c005250544b3be63411c9cf4e, type: 3}

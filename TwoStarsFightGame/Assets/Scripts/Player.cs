@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
         }
         health -= value;
         IngameUIManager.inst.UpdatePlayerHP(health, playerNo);
+        playerController.playerKnockback(value);
         return true;
     }
 
@@ -81,8 +82,11 @@ public class Player : MonoBehaviour
         {
             currentWeapon.Break();
         }
-        if (transform.localScale.x < 0)
+        if (transform.localScale.x < 0) {
             isFlipped = false;
-        else isFlipped = true;
+        } else {
+            isFlipped = true;
+        }
     }
+
 }

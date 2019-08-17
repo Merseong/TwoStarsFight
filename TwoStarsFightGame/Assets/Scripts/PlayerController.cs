@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public float delayTimer = 0f;
     public PlayerState playerState = PlayerState.Idle;
 
+    private float knockbackForceConstant=0.2f;
+
     //TODO: change variable type to private after valnace testing
     public float speed = 0f;
     public float jumpSpeed = 0f;
@@ -160,5 +162,9 @@ public class PlayerController : MonoBehaviour
         }
 
     }
-   
+
+    public void playerKnockback(float damage) {
+        int direction = GameManager.inst.currentPlayer[player.playerNo == PlayerNumber.player1 ? 1 : 0].isFlipped ? 1 : -1;//공격한 상대방의 방향
+        rb.AddForce((direction * Vector2.right + Vector2.up) * damage * knockbackForceConstant, ForceMode2D.Impulse);
+    }
 }

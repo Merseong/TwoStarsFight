@@ -27,7 +27,6 @@ public class GameManager : SingletonBehaviour<GameManager> {
     }
 
     void Start() {
-        //playerInit()
         GameInit();
         StartCoroutine(PlayerRespawn(PlayerNumber.player1));
         StartCoroutine(PlayerRespawn(PlayerNumber.player2));
