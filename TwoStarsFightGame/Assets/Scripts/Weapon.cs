@@ -78,7 +78,6 @@ public abstract class Weapon : MonoBehaviour
         //else 이 윗부분은 따로 프리팹으로 만들어야될듯
         if (canDamage)
         {
-            Debug.Log("Hit");
             if (col.CompareTag("Body") && col.GetComponentInParent<Player>().playerNumber != equipPlayer.playerNumber)
             {
                 if (col.GetComponentInParent<Player>().playerController.playerState == PlayerState.Parry)

@@ -19,7 +19,7 @@ public class Default : Weapon, HandWeapon, Shield
 
     public override void AttackB()
     {
-        //skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_2", false);
+        skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_2", false);
         StartCoroutine(WaitTime(mode1Option.startTime, delegate {
             canDamage = true;
             StartCoroutine(WaitTime(mode1Option.animTime, delegate {

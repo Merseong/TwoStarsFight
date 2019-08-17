@@ -73,17 +73,17 @@ public class At : Weapon, HandWeapon, Shield
 
     public override void DownAttackA()
     {
-        throw new System.NotImplementedException();
+        equipPlayer.defaultWeapon.DownAttackA();
     }
 
     public override void DownAttackB()
     {
-        throw new System.NotImplementedException();
+        equipPlayer.defaultWeapon.DownAttackB();
     }
 
     public void Guard()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 
     public override void ModeChange()
