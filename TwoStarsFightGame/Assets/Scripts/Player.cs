@@ -81,6 +81,7 @@ public class Player : MonoBehaviour
         {
             currentWeapon.Break();
         }
+
         if (transform.localScale.x < 0)
             isFlipped = false;
         else isFlipped = true;
