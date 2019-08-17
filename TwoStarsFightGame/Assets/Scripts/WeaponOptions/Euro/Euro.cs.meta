@@ -3,7 +3,15 @@ guid: 8d4892db2e196a14bbf84560708d5459
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - equipPlayer: {instanceID: 0}
+  - mode1Option: {fileID: 11400000, guid: f2fc1ce11b610b44188761592f0bf1b9, type: 2}
+  - mode2Option: {fileID: 11400000, guid: 0333866c9c4131d40a8ad0c911015ac2, type: 2}
+  - skeleton: {instanceID: 0}
+  - ArrowPrefab: {instanceID: 0}
+  - Arrow: {instanceID: 0}
+  - ShotPosition: {instanceID: 0}
+  - defaultCol: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

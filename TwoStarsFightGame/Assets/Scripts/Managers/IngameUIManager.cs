@@ -7,7 +7,8 @@ using UnityEngine.SceneManagement;
 public class IngameUIManager : SingletonBehaviour<IngameUIManager>
 {
     public Text playtimeText;
-    public GameObject hpPrefab;
+    public GameObject hpPrefabRight;
+    public GameObject hpPrefabLeft;
 
     public Image[,] Player_hp = new Image[2,100];
 
@@ -21,7 +22,7 @@ public class IngameUIManager : SingletonBehaviour<IngameUIManager>
         if (isGenerated < 2)
         {
             for (int i = 0; i < 100; i++) // 플레이어 리스폰 시 hp바 초기화
-                Player_hp[(int)pnum, i] = Instantiate(hpPrefab, hpbar.transform).GetComponent<Image>();
+                Player_hp[(int)pnum, i] = Instantiate(pnum == PlayerNumber.player1 ? hpPrefabLeft : hpPrefabRight, hpbar.transform).GetComponent<Image>();
             isGenerated++;
         }
         else

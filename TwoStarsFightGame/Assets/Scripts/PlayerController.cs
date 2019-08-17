@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return Physics2D.OverlapCircle(landChecker.position, 0.15f, LayerMask.GetMask("Ground"));
+            return Physics2D.OverlapCircle(landChecker.position, 0.1f, LayerMask.GetMask("Ground"));
         }
     }
 
@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.Jump;
         skeleton.AnimationState.SetAnimation(0, "JUMP", false);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         while (!IsGround)
         {
             yield return null;

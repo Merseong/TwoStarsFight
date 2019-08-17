@@ -6,8 +6,7 @@ using Spine.Unity;
 // @
 public class At : Weapon, HandWeapon, Shield
 {
-    public CircleCollider2D starCollider;
-    public BoxCollider2D handCollider;
+    public CircleCollider2D defaultCol;
 
     public void Action()
     {
@@ -16,8 +15,11 @@ public class At : Weapon, HandWeapon, Shield
 
     public override void AttackA()
     {
+        
         if (isModeChanged)
         {
+            DecreaseDurability(mode2Option.minusDurability);
+            defaultCol.enabled = true;
             skeleton.AnimationState.SetAnimation(1, "ATTACK_AT_1", false);
 
             equipPlayer.playerController.playerState = PlayerState.Attack;
@@ -45,6 +47,8 @@ public class At : Weapon, HandWeapon, Shield
     {
         if (isModeChanged)
         {
+            DecreaseDurability(mode2Option.minusDurability);
+            defaultCol.enabled = true;
             skeleton.AnimationState.SetAnimation(1, "ATTACK_AT_2", false);
             equipPlayer.playerController.playerState = PlayerState.Attack;
             StartCoroutine(WaitTime(mode1Option.startTime, delegate {
@@ -96,16 +100,15 @@ public class At : Weapon, HandWeapon, Shield
             isModeChanged = true;
             skeleton.AnimationState.SetAnimation(4, "WEAPON_" + mode2Option.weaponName, false);
             skeleton.AnimationState.SetEmptyAnimation(1, 0);
-            handCollider.enabled = false;
-            starCollider.enabled = true;
+            equipPlayer.OffAllCol();
+            defaultCol.enabled = true;
         }
         else
         {
             isModeChanged = false;
             skeleton.AnimationState.SetAnimation(4, "WEAPON_" + mode1Option.weaponName, false);
             skeleton.AnimationState.SetEmptyAnimation(1, 0);
-            starCollider.enabled = false;
-            handCollider.enabled = true;
+            equipPlayer.OffAllCol();
         }
     }
 

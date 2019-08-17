@@ -118,13 +118,6 @@ public abstract class Weapon : MonoBehaviour
         currentBreakCount = StartCoroutine(ItemBreakCount());
     }
 
-    public void DropWeapon()
-    {
-        StopCoroutine(currentBreakCount);
-        equipPlayer = null;
-        //GetComponent<Collider>().enable = true;
-    }
-
     public void DecreaseDurability(int value)
     {
         if (durability < value)

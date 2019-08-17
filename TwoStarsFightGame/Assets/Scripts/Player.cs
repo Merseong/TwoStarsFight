@@ -23,11 +23,24 @@ public class Player : MonoBehaviour
     public bool isFlipped;
 
     public void Equip(Weapon weapon, int durability)
-    {   
-        currentWeapon = weapon;
-        currentWeapon.OnEquip(durability);
-        weapon.skeleton = playerController.skeleton;
-        playerController.skeleton.AnimationState.SetAnimation(4, "WEAPON_" + weapon.mode1Option.weaponName, false);
+    {
+        if (weapon != null)
+        {
+            currentWeapon = weapon;
+            currentWeapon.OnEquip(durability);
+            weapon.skeleton = playerController.skeleton;
+            playerController.skeleton.AnimationState.SetEmptyAnimation(4, 0);
+            playerController.skeleton.AnimationState.SetAnimation(4, "WEAPON_" + weapon.mode1Option.weaponName, false);
+        }
+    }
+
+    public void OffAllCol()
+    {
+        (defaultWeapon as Default).defaultCol.enabled = false;
+        (atWeapon as At).defaultCol.enabled = false;
+        (marsWeapon as MarsSymbol).defaultCol.enabled = false;
+        (yenWeapon as Yen).defaultCol.enabled = false;
+        (euroWeapon as Euro).defaultCol.enabled = false;
     }
 
     public bool DecreaseHP(int value)

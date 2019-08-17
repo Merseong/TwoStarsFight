@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Default : Weapon, HandWeapon, Shield
 {
+    public BoxCollider2D defaultCol;
     public override void AttackA()
     {
         skeleton.AnimationState.SetAnimation(1, "ATTACK_BASIC_1", false);
@@ -35,6 +36,8 @@ public class Default : Weapon, HandWeapon, Shield
     public override void Break()
     {
         equipPlayer.currentWeapon = this as Weapon;
+        equipPlayer.OffAllCol();
+        defaultCol.enabled = true;
     }
     public override void ModeChange()
     {
