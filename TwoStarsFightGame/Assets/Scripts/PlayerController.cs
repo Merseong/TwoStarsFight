@@ -5,6 +5,7 @@ using Spine.Unity;
 public enum PlayerState
 {
     Idle,
+    Jump,
     Attack,
     Parry,
     Guard,
@@ -50,6 +51,22 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    IEnumerator CheckGrounded()
+    {
+        playerState = PlayerState.Jump;
+        skeleton.AnimationState.SetAnimation(0, "JUMP", false);
+
+        yield return new WaitForSeconds(0.1f);
+        while (!IsGround)
+        {
+            yield return null;
+        }
+        Debug.Log("grounded");
+        playerState = PlayerState.Idle;
+        animSeted = false;
+        skeleton.AnimationState.SetAnimation(0, "IDLE", true);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -71,10 +88,13 @@ public class PlayerController : MonoBehaviour
                 skeleton.AnimationState.SetAnimation(0, "IDLE", true);
                 animSeted = false;
             }
+            if (horizontal > 0) transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            else if (horizontal < 0) transform.localScale = new Vector3(-0.5f, 0.5f, 0.5f);
         }
         else if(playerState == PlayerState.Stern)
         {
             //implement animation of stern
+            skeleton.AnimationState.SetAnimation(0, "DAMAGE", false);
         }
 
         if (playerState != PlayerState.Stern)
@@ -82,6 +102,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetButtonDown("Jump" + playerControl + "P") && IsGround)
             {
                 rb.velocity += new Vector2(0, jumpSpeed);
+                StartCoroutine(CheckGrounded());
             }
             if (playerState != PlayerState.Attack)
             {
@@ -139,4 +160,5 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+   
 }

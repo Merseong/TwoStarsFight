@@ -1136,8 +1136,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32bf729bf60e39b49b5d659f609ebc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isItem: 0
-  weaponState: 0
+  weaponType: 0
   isModeChanged: 0
   equipPlayer: {fileID: 5278992351482359247}
   durability: 100
@@ -1146,6 +1145,7 @@ MonoBehaviour:
   startTimer: 0
   endTimer: 0
   skeleton: {fileID: 6223308044425255649}
+  canDamage: 0
 --- !u!50 &2664664005676225235
 Rigidbody2D:
   serializedVersion: 4
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skeletonDataAsset: {fileID: 11400000, guid: c2eef23a8e5b67f4a875f41165553dd4, type: 2}
   initialSkinName: Stick3
-  initialFlipX: 0
+  initialFlipX: 1
   initialFlipY: 0
   separatorSlotNames: []
   zSpacing: 0
