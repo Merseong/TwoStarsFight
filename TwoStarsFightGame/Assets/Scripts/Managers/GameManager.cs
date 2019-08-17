@@ -34,6 +34,8 @@ public class GameManager : SingletonBehaviour<GameManager> {
     }
 
     private void GameInit() {
+        restartButton.onClick.RemoveAllListeners();
+
         playersLife = new int[] { 3, 3 };
         players[0, 0] = playersInst[0];
         players[0, 1] = playersInst[1];
@@ -82,6 +84,13 @@ public class GameManager : SingletonBehaviour<GameManager> {
 
     private void YoureWinner(PlayerNumber playerNo) {
         winnerText.text = "게임종료!\n플레이어" + ((int)playerNo + 1) + "의 승리";
+        restartButton.onClick.AddListener(delegate { SceneManager.LoadScene("GameManager Test"); });
+        restartButton.gameObject.SetActive(true);
+    }
+
+    public void TimeOver() {
+        winnerText.text = "시간종료!\n무승부";
+        restartButton.onClick.RemoveAllListeners();
         restartButton.onClick.AddListener(delegate { SceneManager.LoadScene("GameManager Test"); });
         restartButton.gameObject.SetActive(true);
     }

@@ -19,6 +19,10 @@ public class PlayTimer : MonoBehaviour
     {
         passtime += Time.deltaTime;
         time = 100 - passtime;
+        if (time <= 0) {
+            time = 0;
+            GameManager.inst.TimeOver();
+        }
         IngameUIManager.inst.UpdatePlaytimeText(time);
     }
 
