@@ -63,9 +63,11 @@ public class IngameUIManager : SingletonBehaviour<IngameUIManager>
     void Update() {
         p1WeaponDurability.text = "";
         p2WeaponDurability.text = "";
-        int p1wd = GameManager.inst.currentPlayer[0].currentWeapon.durability / 10;
-        int p2wd = GameManager.inst.currentPlayer[1].currentWeapon.durability / 10;
-        for (int i = 0; i < p1wd; i++) p1WeaponDurability.text += ">";
-        for (int i = 0; i < p2wd; i++) p2WeaponDurability.text += "<";
+        if (GameManager.inst.currentPlayer[0] != null && GameManager.inst.currentPlayer[1] != null) {
+            int p1wd = GameManager.inst.currentPlayer[0].currentWeapon.durability / 10;
+            int p2wd = GameManager.inst.currentPlayer[1].currentWeapon.durability / 10;
+            for (int i = 0; i < p1wd; i++) p1WeaponDurability.text += ">";
+            for (int i = 0; i < p2wd; i++) p2WeaponDurability.text += "<";
+        }
     }
 }

@@ -64,21 +64,21 @@ public class GameManager : SingletonBehaviour<GameManager> {
     }
 
     private IEnumerator PlayerRespawn(PlayerNumber playerNo) {
+
+        spawnCountText.text = "";
+        for (int i = 0; i < 3; i++) {
+            spawnCountText.text = (i + 1).ToString();
+            yield return new WaitForSeconds(1);
+        }
+        spawnCountText.text = "GO!";
+        yield return new WaitForSeconds(.5f);
         currentPlayer[(int)playerNo] = players[(int)playerNo, playersLife[(int)playerNo] - 1].GetComponent<Player>();
         players[(int)playerNo, playersLife[(int)playerNo] - 1].SetActive(true);
         players[(int)playerNo, playersLife[(int)playerNo] - 1].transform.position = spawnPositions[(int)playerNo].position;
 
         IngameUIManager.inst.ResetHPBar(playerNo);
         yield return null;
-        /*
         spawnCountText.text = "";
-        for (int i = 0; i < 3; i++) {
-            //spawnCountText.text = (i + 1).ToString();
-            yield return new WaitForSeconds(1);
-        }
-        //spawnCountText.text = "GO!";
-        yield return new WaitForSeconds(.5f);
-        spawnCountText.text = ""; */
     }
 
     private void YoureWinner(PlayerNumber playerNo) {
