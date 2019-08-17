@@ -10,10 +10,14 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
             StartCoroutine(WaitTime(mode1Option.startTime, delegate
             {
                 canDamage = true;
-                Shoot(ShotPosition.position, Direction);
+
                 StartCoroutine(WaitTime(mode1Option.animTime, delegate
                 {
                     canDamage = false; equipPlayer.isAfterTime = true;
+
+                    if (isFlipped) Shoot(ShotPosition.position, new Vector2(1, 0));
+                    else Shoot(ShotPosition.position, new Vector2(-1, 0));
+                    
                     StartCoroutine(WaitTime(mode1Option.endTime, delegate
                     {
                         equipPlayer.isAfterTime = false;
@@ -129,8 +133,9 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
 
     public void Shoot(Vector2 start, Vector2 direction)
     {
-        Arrow = Instantiate(ArrowPrefab, start, Quaternion.identity);
+        Arrow = Instantiate(ArrowPrefab, start, Quaternion.Euler(0,0,90));
         Arrow.GetComponent<Rigidbody2D>().velocity = direction * 20f;
+        Arrow.GetComponent<Arrow>().playerNo = equipPlayer.playerNo;
     }
 
     public void HitAction()
