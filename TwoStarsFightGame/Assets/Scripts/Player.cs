@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
         return true;
     }
 
-    void OnTriggerEnter(Collider other) {
+    void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "DEADZONE") {
             GameManager.inst.PlayerDead(playerNo);
         }
