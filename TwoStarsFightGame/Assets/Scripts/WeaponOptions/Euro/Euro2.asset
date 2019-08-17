@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Euro2
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
-  weaponName: Boomerang
-  weaponType: 2
+  weaponName: Spear
+  weaponType: 1
   damage: 1
   minusDurability: 1
   knockbackTime: 1
   stiffTime: 1
   haveAction: 0
   startTime: 1
+  _animTime: 1
   endTime: 1
   coolTime: 1

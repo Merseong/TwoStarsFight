@@ -33,6 +33,12 @@ public abstract class Weapon : MonoBehaviour
     public float endTimer = 0f;
     public SkeletonAnimation skeleton;
 
+    public GameObject ArrowPrefab;
+    public GameObject Arrow;
+    public Transform ShotPosition;
+    public Transform BodyPosition;
+    public Vector2 Direction;
+
     [Space(10)]
     private Coroutine currentBreakCount;
     private Coroutine attackStartCount;
@@ -46,10 +52,17 @@ public abstract class Weapon : MonoBehaviour
     protected bool canParry = false;
     protected bool canGuard = false;
 
+    public void Start()
+    {
+        ArrowPrefab = equipPlayer.ArrowPrefab;
+    }
     public void Update()
     {
         //if(equipPlayer!=null)
-            //transform.position = equipPlayer.transform.position;
+        //transform.position = equipPlayer.transform.position;
+        ShotPosition = equipPlayer.ShotPosition;
+        BodyPosition = equipPlayer.BodyPosition;
+        Direction = new Vector2(ShotPosition.position.x - BodyPosition.position.x, ShotPosition.position.y - BodyPosition.position.y);
     }
     public void OnTriggerEnter2D(Collider2D col)
     {

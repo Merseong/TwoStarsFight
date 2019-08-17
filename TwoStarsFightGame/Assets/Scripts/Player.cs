@@ -13,12 +13,16 @@ public class Player : MonoBehaviour
     private GameObject hpbar;
     public PlayerController playerController = null;
     public bool isAfterTime = false;
+    public Transform ShotPosition;
+    public Transform BodyPosition;
+    public GameObject ArrowPrefab;
 
     [Header("Weapons in body")]
     public Weapon defaultWeapon;
     public Weapon atWeapon;
     public Weapon marsWeapon;
     public Weapon yenWeapon;
+    public Weapon euroWeapon;
 
     public void Equip(Weapon weapon, int durability)
     {   
@@ -51,7 +55,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Equip(atWeapon, 100);
+            Equip(euroWeapon, 100);
         }
         else if (Input.GetKeyDown(KeyCode.Backspace))
         {
