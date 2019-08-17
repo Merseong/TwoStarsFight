@@ -14,12 +14,18 @@ public class Player : MonoBehaviour
     public PlayerController playerController = null;
     public bool isAfterTime = false;
 
-    [SerializeField]
-    private Weapon defaultWeapon;
+    [Header("Weapons in body")]
+    public Weapon defaultWeapon;
+    public Weapon atWeapon;
+    public Weapon marsWeapon;
+    public Weapon yenWeapon;
 
-    public void Equip(Weapon weapon)
-    {
+    public void Equip(Weapon weapon, int durability)
+    {   
         currentWeapon = weapon;
+        currentWeapon.OnEquip(durability);
+        weapon.skeleton = playerController.skeleton;
+        playerController.skeleton.AnimationState.SetAnimation(4, "WEAPON_" + weapon.mode1Option.weaponName, false);
     }
 
     public bool DecreaseHP(int value)
@@ -38,6 +44,18 @@ public class Player : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "DEADZONE") {
             GameManager.inst.PlayerDead(playerNo);
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            Equip(atWeapon, 100);
+        }
+        else if (Input.GetKeyDown(KeyCode.Backspace))
+        {
+            currentWeapon.Break();
         }
     }
 }

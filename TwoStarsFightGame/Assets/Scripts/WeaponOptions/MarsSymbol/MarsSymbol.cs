@@ -2,50 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MarsSymbol : Weapon, HandWeapon
+public class MarsSymbol : MonoBehaviour
 {
-    public void Action()
+    // Start is called before the first frame update
+    void Start()
     {
-
+        
     }
 
-    public override void AttackA()
+    // Update is called once per frame
+    void Update()
     {
-
-    }
-
-    public override void AttackB()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void Break()
-    {
-        equipPlayer.currentWeapon = this as Weapon;
-    }
-
-    public void Guard()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void HitAction()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public override void ModeChange()
-    {
-        return;
-    }
-
-    public void Parrying()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void Shoot(Vector2 start, Vector2 direction)
-    {
-        throw new System.NotImplementedException();
+        
     }
 }

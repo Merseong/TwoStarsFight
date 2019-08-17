@@ -1570,6 +1570,9 @@ MonoBehaviour:
   playerController: {fileID: 353523265794908025}
   isAfterTime: 0
   defaultWeapon: {fileID: 461133593181432609}
+  atWeapon: {fileID: 0}
+  marsWeapon: {fileID: 0}
+  yenWeapon: {fileID: 0}
 --- !u!114 &353523265794908025
 MonoBehaviour:
   m_ObjectHideFlags: 0

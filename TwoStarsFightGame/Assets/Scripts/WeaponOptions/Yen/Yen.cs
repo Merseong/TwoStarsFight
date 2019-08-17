@@ -2,50 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Yen : Weapon, RangeWeapon, HandWeapon
+public class Yen : MonoBehaviour
 {
-    public void Action()
+    // Start is called before the first frame update
+    void Start()
     {
-
+        
     }
 
-    public override void AttackA()
+    // Update is called once per frame
+    void Update()
     {
-
-    }
-
-    public override void AttackB()
-    {
-    
-    }
-
-    public void Shoot(Vector2 start, Vector2 direction)
-    {
-
-    }
-
-    public override void Break()
-    {
-        equipPlayer.currentWeapon = this as Weapon;
-    }
-
-    public void Guard()
-    {
-
-    }
-
-    public override void ModeChange()
-    {
-        return;
-    }
-
-    public void Parrying()
-    {
-
-    }
-
-    public void HitAction()
-    {
-
+        
     }
 }
