@@ -35,9 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         get
         {
-            return Physics2D.Linecast(landChecker.position + new Vector3(-col.bounds.size.x / 2 - 0.01f, 0),
-                landChecker.position + new Vector3(col.bounds.size.x / 2 + 0.01f, 0),
-                1 << LayerMask.NameToLayer("Ground")).transform != null;
+            return Physics2D.OverlapCircle(landChecker.position, 0.15f, LayerMask.GetMask("Ground"));
         }
     }
 
