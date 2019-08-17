@@ -85,7 +85,14 @@ public class Default : Weapon, HandWeapon, Shield
         StartCoroutine(WaitTime(mode2Option.startTime, delegate
         {
             //equipPlayer.transform.position += new Vector3(2f, 0f, 0f);
-            equipPlayer.playerController.rb.velocity = new Vector3(equipPlayer.playerController.rb.velocity.x+6f,equipPlayer.playerController.rb.velocity.y+0f,0f);
+            if (equipPlayer.isFlipped)
+            {
+                equipPlayer.playerController.rb.velocity = new Vector3(equipPlayer.playerController.rb.velocity.x + 6f, equipPlayer.playerController.rb.velocity.y + 0f, 0f);
+            }
+            else
+            {equipPlayer.playerController.rb.velocity = new Vector3(equipPlayer.playerController.rb.velocity.x - 6f, equipPlayer.playerController.rb.velocity.y + 0f, 0f);
+
+            }
             StartCoroutine(WaitTime(mode2Option.animTime, delegate
             {
                 equipPlayer.isAfterTime = true;
