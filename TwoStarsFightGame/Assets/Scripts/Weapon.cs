@@ -35,6 +35,8 @@ public abstract class Weapon : MonoBehaviour
 
     public GameObject ArrowPrefab;
     public GameObject Arrow;
+    public GameObject BoomerangPrefab;
+    public GameObject Boomerang;
     public Transform ShotPosition;
     public bool isFlipped;
 
