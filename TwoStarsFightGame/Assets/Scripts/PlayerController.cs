@@ -8,7 +8,8 @@ public enum PlayerState
     Attack,
     Parry,
     Guard,
-    Stern
+    Stern,
+    Rush
 }
 
 public class PlayerController : MonoBehaviour
@@ -84,30 +85,13 @@ public class PlayerController : MonoBehaviour
             }
             if (playerState != PlayerState.Attack)
             {
-                if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
-                {
-                    playerState = PlayerState.Attack;
-                    player.currentWeapon.AttackA();
-                }
-                if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
-                {
-                    playerState = PlayerState.Attack;
-                    player.currentWeapon.AttackB();
-                }
-                if (Input.GetButtonDown("ModeChange" + playerControl + "P"))
-                {
-                    player.currentWeapon.ModeChange();
-                }
                 //guard and parry
-                /*if (Input.GetButtonDown("Vertical" + playerControl + "P"))
-                {
-                    Shield shield = (Shield)player.currentWeapon;
-                    shield.Parrying();
-                }*/
                 if (vertical < 0)
                 {
-                    player.currentWeapon.DownAct();
-                    playerState = PlayerState.Guard;
+                    if (playerState != PlayerState.Parry && playerState !=PlayerState.Rush)
+                    {
+                        player.currentWeapon.DownAct();
+                    }
                     if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
                     {
                         //playerState = PlayerState.Attack;
@@ -115,13 +99,43 @@ public class PlayerController : MonoBehaviour
                     }
                     if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
                     {
-                        playerState = PlayerState.Guard;
+                        //playerState = PlayerState.Guard;
                         player.currentWeapon.DownAttackB();
                     }
                 }
+                else
+                {
+                    if (Input.GetButtonDown("BasicAttack" + playerControl + "P"))
+                    {
+                        //playerState = PlayerState.Attack;
+                        player.currentWeapon.AttackA();
+                    }
+                    if (Input.GetButtonDown("SpecialAttack" + playerControl + "P"))
+                    {
+                        //playerState = PlayerState.Attack;
+                        player.currentWeapon.AttackB();
+                    }
+                    if (Input.GetButtonDown("ModeChange" + playerControl + "P"))
+                    {
+                        player.currentWeapon.ModeChange();
+                    }
+                }
+                //guard and parry
+                /*if (Input.GetButtonDown("Vertical" + playerControl + "P"))
+                {
+                    Shield shield = (Shield)player.currentWeapon;
+                    shield.Parrying();
+                }*/
+                
 
             }
-            transform.position += new Vector3(horizontal, 0, 0) * speed * Time.deltaTime;
+            if (playerState == PlayerState.Guard && vertical >= 0)
+            {
+                skeleton.AnimationState.AddAnimation(0, "IDLE", true, 0);
+                skeleton.AnimationState.SetEmptyAnimation(1, 0);
+                playerState = PlayerState.Idle;
+            }
+            if (playerState != PlayerState.Guard) transform.position += new Vector3(horizontal, 0, 0) * speed * Time.deltaTime;
         }
 
     }
