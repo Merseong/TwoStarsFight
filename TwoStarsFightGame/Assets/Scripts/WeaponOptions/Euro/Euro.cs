@@ -6,8 +6,9 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
 {
     public override void AttackA()
     {
-            skeleton.AnimationState.SetAnimation(1, "ATTACK_EURO_1", false);
-            StartCoroutine(WaitTime(mode1Option.startTime, delegate
+        skeleton.AnimationState.SetAnimation(1, "ATTACK_EURO_1", false);
+        equipPlayer.playerController.playerState = PlayerState.Attack;
+        StartCoroutine(WaitTime(mode1Option.startTime, delegate
             {
                 canDamage = true;
 
@@ -32,9 +33,13 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
     public override void AttackB()
     {
         skeleton.AnimationState.SetAnimation(1, "ATTACK_EURO_2", false);
+        equipPlayer.playerController.playerState = PlayerState.Attack;
         StartCoroutine(WaitTime(mode1Option.startTime, delegate {
+            
             canDamage = true;
+            StartCoroutine("ArrowRain");
             StartCoroutine(WaitTime(mode1Option.animTime, delegate {
+                
                 canDamage = false; equipPlayer.isAfterTime = true;
                 StartCoroutine(WaitTime(mode1Option.endTime, delegate {
                     equipPlayer.isAfterTime = false;
@@ -74,6 +79,7 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
         //mode2Option == information of default shield
         //start delay -> parrying -> end delay
         //skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_1", false);
+
         StartCoroutine(WaitTime(mode2Option.startTime, delegate
         {
             StartCoroutine(WaitTime(mode2Option.animTime, delegate
@@ -91,6 +97,7 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
     public override void DownAttackA()
     {
         skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_2", false);
+        equipPlayer.playerController.playerState = PlayerState.Attack;
         StartCoroutine(WaitTime(mode2Option.startTime, delegate
         {
             StartCoroutine(WaitTime(mode2Option.animTime, delegate
@@ -109,6 +116,7 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
     public override void DownAttackB()
     {
         skeleton.AnimationState.SetAnimation(1, "SHIELD_BASIC_3", false);
+        equipPlayer.playerController.playerState = PlayerState.Attack;
         StartCoroutine(WaitTime(mode2Option.startTime, delegate
         {
             canDamage = true;
@@ -138,9 +146,26 @@ public class Euro : Weapon, RangeWeapon, HandWeapon
         Arrow.GetComponent<Arrow>().playerNo = equipPlayer.playerNo;
     }
 
+    public void Shoot(Vector2 start, Vector2 direction, float speed)
+    {
+        Arrow = Instantiate(ArrowPrefab, start, Quaternion.identity);
+        Arrow.GetComponent<Rigidbody2D>().velocity = direction * speed;
+        Arrow.GetComponent<Arrow>().playerNo = equipPlayer.playerNo;
+    }
+
     public void HitAction()
     {
 
+    }
+
+    IEnumerator ArrowRain()
+    {
+        for(int i = 0; i<6;i++)
+        {
+            yield return new WaitForSeconds(0.1f);
+            Shoot(ShotPosition.position, Quaternion.Euler(0,0,Random.Range(-50f,50f)) * new Vector2(0, 1),10f);
+        }
+        
     }
 }
 
