@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            Equip(euroWeapon, 100);
+            Equip(atWeapon, 100);
         }
         else if (Input.GetKeyDown(KeyCode.Backspace))
         {

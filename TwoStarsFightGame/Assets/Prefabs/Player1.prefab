@@ -1550,13 +1550,14 @@ MonoBehaviour:
   playerNo: 0
   playerController: {fileID: 353523265794908025}
   isAfterTime: 0
-  ShotPosition: {fileID: 0}
-  BodyPosition: {fileID: 0}
-  ArrowPrefab: {fileID: 0}
+  ShotPosition: {fileID: 3726973729162143862}
+  BodyPosition: {fileID: 517018045690930727}
+  ArrowPrefab: {fileID: 7539722139990925827, guid: 31de4b8f1b107fe49b741d22a0814386,
+    type: 3}
   defaultWeapon: {fileID: 1038099532944748929}
   atWeapon: {fileID: 3192037199654469865}
   marsWeapon: {fileID: 0}
-  yenWeapon: {fileID: 0}
+  yenWeapon: {fileID: 1564906920882115602}
   euroWeapon: {fileID: 0}
 --- !u!114 &353523265794908025
 MonoBehaviour:
