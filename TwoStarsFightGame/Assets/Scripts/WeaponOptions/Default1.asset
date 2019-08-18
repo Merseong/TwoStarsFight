@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Default1
   m_EditorClassIdentifier: Assembly-CSharp::WeaponOption
   weaponName: BASIC
-  weaponType: 1
+  weaponType: 0
   damage: 10
   minusDurability: 0
   knockbackTime: 0
   stiffTime: 0
   haveAction: 0
   startTime: 0.1
-  _animTime: 0.6
-  endTime: 0
+  _animTime: 1
+  endTime: 0.1
   coolTime: 0
