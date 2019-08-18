@@ -11,14 +11,14 @@ public class PlayTimer : MonoBehaviour
 
     private void OnEnable()
     {
-        time = 99;
+        time = 200;
         passtime = 0;
     }
 
     private void Update()
     {
         passtime += Time.deltaTime;
-        time = 100 - passtime;
+        time = 200 - passtime;
         if (time <= 0) {
             time = 0;
             GameManager.inst.TimeOver();
