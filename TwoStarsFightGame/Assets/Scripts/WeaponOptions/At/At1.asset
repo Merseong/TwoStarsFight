@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: AT_1
   weaponType: 0
   damage: 25
-  minusDurability: 0
+  minusDurability: 5
   knockbackTime: 0
   stiffTime: 0
   haveAction: 0

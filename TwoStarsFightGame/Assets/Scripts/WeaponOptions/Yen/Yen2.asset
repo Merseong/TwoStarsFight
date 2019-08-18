@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponName: YEN_2
   weaponType: 1
   damage: 20
-  minusDurability: 0
+  minusDurability: 20
   knockbackTime: 0
   stiffTime: 0
   haveAction: 0

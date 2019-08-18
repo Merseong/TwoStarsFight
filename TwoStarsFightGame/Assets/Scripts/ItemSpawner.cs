@@ -17,6 +17,7 @@ public class ItemSpawner : MonoBehaviour
         if (!isWeaponSpawned && lastTime + 10 < Time.time)
         {
             var box = Instantiate(weaponBox, transform);
+            GetComponent<AudioSource>().Play();
             isWeaponSpawned = true;
             box.GetComponent<WeaponBox>().parent = this;
             box.GetComponent<WeaponBox>().inside = (WeaponName)Random.Range(1, 5);
